@@ -31,7 +31,7 @@
                             <p class="card-text">Autor del libro</p>
                             <p class="card-text">Biblioteca de FAING</p>
                             <p class="card-text">Disponibles <span th:text="${kardex.cantidad}"></span></p>
-                            <a href="#" class="btn btn-primary w-100">Reservar</a>
+                            <a href="#" th:data-libroid="${kardex.libroId}" class="btn btn-primary w-100 btn-reservar">Reservar</a>
                         </div>
 
                     </div>
@@ -41,8 +41,20 @@
         </div>
     </div>
 
+
+
     <!-- FINAL CONTENIDO  -->
 
+    <script>
+        let d = document;
+        let log = console.log;
+
+        $(document).ready(function(){
+            $('.btn-reservar').click(function(){
+               log(this)
+            });
+        });
+    </script>
 </div>
 </body>
 </html>
