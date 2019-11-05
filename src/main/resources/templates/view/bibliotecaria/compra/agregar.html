@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/admin_layout}"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Bienvenido</title>
+</head>
+<body>
+<div layout:fragment="content" class="pt-5">
+    <div class="container-fluid p-0" style="position:fixed;z-index: 20;">
+        <div class="row p-0">
+            <nav class="col-12 navbar navbar-expand-sm navbar-light bg-light border-bottom">
+                <h1>Agregar Compra</h1>
+            </nav>
+        </div>
+    </div>
+
+    <!-- CONTENIDO  -->
+    <div class="container mt-5">
+        <div class="row mt-5 d-flex justify-content-center">
+            <form action="" class="col-8 mt-5">
+                <div class="form-group row">
+                    <label for="usuario" class="col-sm-2 col-form-label">Usuario</label>
+                    <input type="hidden" name="usuarioId" value="">
+                    <div class="col-sm-10">
+                        <input type="text" disabled class="form-control" id="usuario" value="">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="proveedorId" class="col-sm-2 col-form-label">Proveedor</label>
+                    <div class="col-sm-10">
+                        <select id="proveedorId" class="custom-select" name="proveedorId">
+                            <option disabled selected>Seleccione una opción</option>
+                            <th:block th:each="proveedor :${listadoProveedor}">
+                                <option value="" th:value="${proveedor.id}" th:text="${proveedor.nombre}"></option>
+                            </th:block>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="descripcion" class="col-sm-2 col-form-label">Descripcion</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="descripcion" placeholder="una descripcion">
+                    </div>
+                </div>
+
+
+
+                <div class="form-group row">
+                    <label class="col-sm-6 col-form-label">Detalle de compra</label>
+                    <div class="col-6">
+                        <div class="col-12 p-0 btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="col-6 btn btn-secondary" data-toggle="modal" data-target="#modalListaLibro">Lista libros</button>
+                            <button type="button" class="col-6 btn btn-outline-secondary">Agregar</button>
+                        </div>
+
+                    </div>
+
+                </div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Titulo de Libro</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Subtotal</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                        <td>@mdo</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <div class="form-group row">
+                    <label for="numero" class="col-sm-2 col-form-label">Total</label>
+                    <div class="col-sm-10">
+                        <input type="text" disabled class="text-right form-control"  value="0.00">
+                    </div>
+                </div>
+                <div class="row">
+                    <button type="submit" class="col-12 btn btn-primary">Agregar compra</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL -->
+    <div class="modal fade" id="modalListaLibro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Lista Libros</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scrope="col">Portada</th>
+                            <th scope="col">Titulo de Libro</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td><button class="btn btn-outline-success">Selecionar</button></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FINAL MODAL -->
+    <!-- FINAL CONTENIDO  -->
+
+</div>
+
+
+</body>
+</html>

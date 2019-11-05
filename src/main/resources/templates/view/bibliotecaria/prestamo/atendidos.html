@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/admin_layout}"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Bienvenido</title>
+</head>
+<body>
+<div layout:fragment="content" class="pt-5">
+    <div class="container-fluid p-0" style="position:fixed;z-index: 20;">
+        <div class="row p-0">
+            <nav class="col-12 navbar navbar-expand-sm navbar-light bg-light border-bottom">
+                <h1>Prestamos por atender</h1>
+            </nav>
+        </div>
+    </div>
+    <!-- CONTENIDO  -->
+    <div class="container mt-5">
+        <div class="row mt-5 d-flex justify-content-center">
+
+            <table class="table mt-5">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Titulo de Libro</th>
+                    <th scope="col">Usuario</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Titulo 1</td>
+                    <td>Roster Montarico</td>
+                    <td>1</td>
+                    <td><span class="badge badge-warning p-2"> ATENDIDO </span></td>
+                    <td>
+                        <button type="button" class="btn btn-outline-success">DEVOLVER</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <!-- FINAL CONTENIDO  -->
+</div>
+</body>
+</html>

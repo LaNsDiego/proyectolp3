@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/admin_layout}"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Bienvenido</title>
+</head>
+<body>
+<div layout:fragment="content" class="class="pt-5"">
+    <!-- CONTENIDO  -->
+    <div class="container mt-5">
+        <div class="row mt-5 d-flex justify-content-center">
+
+            <table class="table mt-5">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Titulo de Libro</th>
+                    <th scope="col">Usuario</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Titulo 1</td>
+                    <td>Roster Montarico</td>
+                    <td>1</td>
+                    <td><span class="badge badge-primary p-2"> RESERVADO </span></td>
+                    <td>
+                        <button type="button" class="btn btn-outline-warning">PRESTAR</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <!-- FINAL CONTENIDO  -->
+</div>
+</body>
+</html>

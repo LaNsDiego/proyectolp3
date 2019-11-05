@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/admin_layout}"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Bienvenido</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="row">
+        <nav class="container-fluid p-3 navbar navbar-light bg-light navbar-expand-sm border-bottom" style="position: fixed;z-index: 20">
+            <h1>Agregar nuevo libro</h1>
+        </nav>
+    </div>
+
+    <!-- CONTENIDO  -->
+    <div class="container mt-5 pt-5 pb-5">
+        <div class="row mt-5 d-flex justify-content-center">
+            <form id="formAgregar" action="" class="col-8" th:action="@{/libro/agregar}" method="post">
+                <div class="form-group row">
+                    <label for="titulo" class="col-sm-2 col-form-label">Titulo</label>
+                    <div class="col-sm-10">
+                        <input type="text"  name="titulo" class="form-control" id="titulo" placeholder="Titutlo del libro">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="categoriaId" class="col-sm-2 col-form-label">Categoria</label>
+                    <div class="col-sm-10">
+                        <select id="categoriaId" name="categoriaId" class="custom-select">
+                            <option value="" disabled selected>Escoje un opción</option>
+                            <th:block th:each="categoria :${listadoCategoria}">
+                                <option value="" th:value="${categoria.id}" th:text="${categoria.nombre}"></option>
+                            </th:block>
+                        </select>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group row">
+                    <label for="idioma" class="col-sm-2 col-form-label">Idioma</label>
+                    <div class="col-sm-10">
+                        <select id="idioma" name="idioma" class="custom-select">
+                            <option value="" disabled selected>Escoje un opción</option>
+                            <option value="español" selected>Español</option>
+                            <option value="ingles" selected>Ingles</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="materiaId" class="col-sm-2 col-form-label">Materia</label>
+                    <div class="col-sm-10">
+                        <select id="materiaId"  class="custom-select">
+                            <option value="" disabled selected>Escoje un opción</option>
+                            <th:block th:each="materia :${listadoMateria}">
+                                <option value="" th:value="${materia.id}" th:text="${materia.nombre}"></option>
+                            </th:block>
+                        </select>
+                    </div>
+                </div>
+
+                <div  class="form-group row d-flex justify-content-end">
+                    <div id="contenedor-materias" class="col-sm-10">
+
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="autor" class="col-sm-2 col-form-label">Autores</label>
+                    <div class="col-sm-10">
+                        <select id="autorId" class="custom-select">
+                            <option value="" disabled selected>Escoje un opción</option>
+                            <th:block th:each="autor :${listadoAutor}">
+                                <option value="" th:value="${autor.id}" th:text="${(autor.nombres + ' ' + autor.apellidos )}"></option>
+                            </th:block>
+                        </select>
+                    </div>
+                </div>
+
+                <div  class="form-group row d-flex justify-content-end">
+                    <div id="contenedor-autores" class="col-sm-10">
+
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="editorial" class="col-sm-2 col-form-label">Editorial</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="editorial" class="form-control" id="editorial" placeholder="Nombre de la editorial">
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <label for="precio" class="col-sm-2 col-form-label">Precio</label>
+                    <div class="col-sm-10">
+                        <input type="text" id="precio" name="precio" class="text-right form-control"  placeholder="0.00">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="resumen">Resumen</label>
+                    <textarea class="form-control" id="resumen" name="resumen" rows="3"></textarea>
+                </div>
+                <div class="row">
+                    <button type="submit" class="col-12 btn btn-primary">Agregar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- FINAL CONTENIDO  -->
+
+    <script>
+        $(document).ready(function(){
+
+            let materias = []
+            let autores = []
+            let contendor_materia = $("#contenedor-materias")
+            let contendor_autores = $("#contenedor-autores")
+            let cmbMateria = $("#materiaId")
+            let cmbAutor = $("#autorId")
+            cmbMateria.change(function(){
+                console.log("CHANGE")
+                if(!materias.includes(this.value)){
+                    materias.push(this.value)
+                    contendor_materia.append(
+                        `<span class="badge badge-dark mr-2 p-2 mb-2">${cmbMateria.find("option:selected").text()}</span>
+                        <input type="hidden" name="materias[]" value="${this.value}">`
+                    );
+                }
+
+            });
+
+            cmbAutor.change(function(){
+                console.log("CHANGE")
+                if(!autores.includes(this.value)){
+                    autores.push(this.value)
+                    contendor_autores.append(
+                        `<span class="badge badge-dark mr-2 p-2 mb-2">${cmbAutor.find("option:selected").text()}</span>
+                        <input type="hidden" name="autores[]" value="${this.value}">`
+                    );
+                }
+
+            })
+
+            // $("#formAgregar").submit(function(e){
+            //     let form = new FormData(this);
+            //     form.append("materias" , materias);
+            //     form.append("autores" , autores);
+            //
+            //     fetch('/libro/agregar',{
+            //         method:'POST',
+            //         body: form
+            //     });
+            //
+            //     e.preventDefault();
+            // })
+        })
+    </script>
+</div>
+</body>
+</html>

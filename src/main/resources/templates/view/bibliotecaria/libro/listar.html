@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/admin_layout}"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Bienvenido</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="row">
+        <nav class="container-fluid p-3 navbar navbar-light bg-light navbar-expand-sm border-bottom" style="position: fixed;z-index: 20">
+            <h1>Lista de libros</h1>
+        </nav>
+    </div>
+
+    <!-- CONTENIDO  -->
+    <div class="container mt-5 pt-5">
+        <div class="row d-flex justify-content-center">
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Editorial</th>
+                    <th>Idioma</th>
+                    <th>Fecha Creacion</th>
+                    <th>Precio</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                <th:block th:each="libro : ${listadoLibro}">
+                    <tr>
+                        <td th:text="${libroStat.index +1}"></td>
+                        <td th:text="${libro.titulo}"></td>
+                        <td th:text="${libro.editorial}"></td>
+                        <td th:text="${libro.idioma}"></td>
+                        <td th:text="${libro.fechaCreacion}"></td>
+                        <td th:text="${libro.precio}"></td>
+
+                        <td>
+                            <a class="btn btn-outline-secondary" href="" th:href="@{/libro/editar/{id}(id=${libro.id})}">Editar</a>
+<!--                            <a class="btn-small" href="" th:href="@{/libro/eliminar/{id}(id=${empleado.id})}">Eliminar</a>-->
+                        </td>
+                    </tr>
+                </th:block>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <!-- FINAL CONTENIDO  -->
+</div>
+</body>
+</html>

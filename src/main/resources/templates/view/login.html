@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}">
+    <link rel="stylesheet" href="css/personalizado.css" th:href="@{css/personalizado.css}">
+    <script th:src="@{../../static/js/bootstrap.min.js}"></script>
+    <title>Inicio de Sesión</title>
+</head>
+<body >
+
+<div class="container vh-100">
+    <div class="d-flex justify-content-center align-items-center h-100">
+        <div class="col-sm-12 col-md-8 col-lg-10">
+            <div class="card" >
+                <div class="row">
+                    <img src="http://lorempixel.com/200/250/" class="col" alt="...">
+                    <div class="col p-4">
+                        <h1>Inicio de sesión</h1>
+                        <form action="" th:action="@{/login}" method="post">
+                            <div class="form-group">
+                                <label for="correo">Correo Electrónico</label>
+                                <input type="email" class="form-control" id="correo" aria-describedby="correoAyuda" placeholder="Ingrese un correo">
+                                <small id="correoAyuda" class="form-text text-muted">Nunca compartiremos tu correo con nadie.</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="clave">Clave</label>
+                                <input type="password" class="form-control" id="clave" placeholder="Ingrese su clave">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
