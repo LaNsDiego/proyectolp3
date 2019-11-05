@@ -9,13 +9,11 @@
     <title>Bienvenido</title>
 </head>
 <body>
-<div layout:fragment="content" class="pt-5">
-    <div class="container-fluid p-0" style="position:fixed;z-index: 20;">
-        <div class="row p-0">
-            <nav class="col-12 navbar navbar-expand-sm navbar-light bg-light border-bottom">
-                <h1>Lista de Compra</h1>
-            </nav>
-        </div>
+<div layout:fragment="content">
+    <div class="row">
+        <nav class="container-fluid p-3 navbar navbar-light bg-light navbar-expand-sm border-bottom" style="position: fixed;z-index: 20">
+            <h1>Lista de compras</h1>
+        </nav>
     </div>
 
     <!-- CONTENIDO  -->
@@ -33,15 +31,17 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Roster Montarico</td>
-                    <td>S/. 250</td>
-                    <td>2 de Noviembre del 2019</td>
-                    <td>
-                        <button type="button" class="btn btn-outline-success">VER DETALLE</button>
-                    </td>
-                </tr>
+                <th:block th:each="compra : ${listadoCompra}">
+                    <tr>
+                        <td th:text="${compraStat.index +1}"></td>
+                        <td th:text="${compra.usuarioId}"></td>
+                        <td th:text="${compra.total}"></td>
+                        <td th:text="${compra.fechaCompra}"></td>
+                        <td>
+                            <button type="button" th:data-compraid="${compra.id}" data-toggle="modal" data-target="#modalDetalle" class="btn btn-outline-success btnModalDetalle" >Ver Detalle</button>
+                        </td>
+                    </tr>
+                </th:block>
                 </tbody>
             </table>
         </div>
@@ -50,6 +50,45 @@
 
     <!-- FINAL CONTENIDO  -->
 
+
+    <!-- MODAL -->
+    <div class="modal fade" id="modalDetalle" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Detalle de compra</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div id="bodyModalDetalle" class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--    FINAL MODAL-->
+
+
+    <script>
+        let d = document;
+        let log = console.log;
+        $(document).ready(function(){
+            let btnModalDetalle = $(".btnModalDetalle");
+            btnModalDetalle.click(function(){
+                let compraId = $(this).data("compraid");
+                let bodyModalDetalle = $("#bodyModalDetalle");
+                let ruta = '/compra/detalle/'+compraId;
+                log(ruta);
+               fetch(ruta)
+                   .then(res => res.text())
+                   .then(res => {bodyModalDetalle.html(res)})
+            });
+        });
+    </script>
 </div>
 </body>
 </html>

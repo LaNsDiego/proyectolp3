@@ -9,22 +9,21 @@
     <title>Bienvenido</title>
 </head>
 <body>
-<div layout:fragment="content" class="pt-5">
-    <div class="container-fluid p-0" style="position:fixed;z-index: 20;">
-        <div class="row p-0">
-            <nav class="col-12 navbar navbar-expand-sm navbar-light bg-light border-bottom">
-                <h1>Agregar Compra</h1>
-            </nav>
-        </div>
+<div layout:fragment="content">
+    <div class="row">
+        <nav class="container-fluid p-3 navbar navbar-light bg-light navbar-expand-sm border-bottom" style="position: fixed;z-index: 20">
+            <h1>Agregar nueva compra</h1>
+        </nav>
     </div>
 
     <!-- CONTENIDO  -->
     <div class="container mt-5">
         <div class="row mt-5 d-flex justify-content-center">
-            <form action="" class="col-8 mt-5">
+            <form action="" th:action="@{/compra/agregar}" class="col-sm-12 col-md-10 mt-5" method="post">
                 <div class="form-group row">
                     <label for="usuario" class="col-sm-2 col-form-label">Usuario</label>
-                    <input type="hidden" name="usuarioId" value="">
+                    <input type="hidden" name="usuarioId" value="1">
+                    <input type="hidden" name="bibliotecaId" value="1">
                     <div class="col-sm-10">
                         <input type="text" disabled class="form-control" id="usuario" value="">
                     </div>
@@ -32,7 +31,7 @@
 
                 <div class="form-group row">
                     <label for="proveedorId" class="col-sm-2 col-form-label">Proveedor</label>
-                    <div class="col-sm-10">
+                    <div class="col-sm-4">
                         <select id="proveedorId" class="custom-select" name="proveedorId">
                             <option disabled selected>Seleccione una opción</option>
                             <th:block th:each="proveedor :${listadoProveedor}">
@@ -40,12 +39,17 @@
                             </th:block>
                         </select>
                     </div>
+
+                    <label for="fechaCompra" class="col-sm-2 col-form-label text-right">Fec. Compra</label>
+                    <div class="col-sm-4">
+                        <input id="fechaCompra" name="fechaCompra" type="date" class="form-control">
+                    </div>
                 </div>
 
                 <div class="form-group row">
                     <label for="descripcion" class="col-sm-2 col-form-label">Descripcion</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="descripcion" placeholder="una descripcion">
+                        <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="una descripcion">
                     </div>
                 </div>
 
@@ -54,53 +58,30 @@
                 <div class="form-group row">
                     <label class="col-sm-6 col-form-label">Detalle de compra</label>
                     <div class="col-6">
-                        <div class="col-12 p-0 btn-group" role="group" aria-label="Basic example">
-                            <button type="button" class="col-6 btn btn-secondary" data-toggle="modal" data-target="#modalListaLibro">Lista libros</button>
-                            <button type="button" class="col-6 btn btn-outline-secondary">Agregar</button>
-                        </div>
-
+                        <button id="btnListaLibros" type="button" class="col btn btn-secondary" data-toggle="modal" data-target="#modalListaLibro">Listar libros</button>
                     </div>
 
                 </div>
                 <table class="table">
                     <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Titulo de Libro</th>
-                        <th scope="col">Precio</th>
-                        <th scope="col">Cantidad</th>
-                        <th scope="col">Subtotal</th>
+                        <th scope="col" style="width: 5%" >#</th>
+                        <th scope="col" style="width: 30%">Titulo</th>
+                        <th scope="col" style="width: 15%">Precio</th>
+                        <th scope="col" style="width: 15%">Cantidad</th>
+                        <th scope="col" style="width: 20%">Subtotal</th>
+                        <th scope="col" style="width: 15%">Accion</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                        <td>@mdo</td>
-                    </tr>
+                    <tbody id="tbody-lista-detalle">
+
                     </tbody>
                 </table>
 
                 <div class="form-group row">
-                    <label for="numero" class="col-sm-2 col-form-label">Total</label>
+                    <label class="col-sm-2 col-form-label">Total</label>
                     <div class="col-sm-10">
-                        <input type="text" disabled class="text-right form-control"  value="0.00">
+                        <input id="total" name="total" type="number" class="text-right form-control" placeholder="0.0" readonly>
                     </div>
                 </div>
                 <div class="row">
@@ -121,21 +102,31 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <table class="table">
+                    <table class="table table-responsive">
                         <thead>
                         <tr>
                             <th scope="col">#</th>
                             <th scrope="col">Portada</th>
                             <th scope="col">Titulo de Libro</th>
+                            <th scope="col">Accion</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td><button class="btn btn-outline-success">Selecionar</button></td>
-                        </tr>
+                        <tbody id="tbody-lista-libros">
+                        <th:block th:each="libro : ${listadoLibro}">
+                            <tr>
+                                <td th:text="${libroStat.index +1}"></td>
+                                <td><img th:src="@{/imagenes/portada.jpg}" th:width="60px" height="80px" alt="portada"></td>
+                                <td th:text="${libro.titulo}"></td>
+                                <td>
+                                    <button class="btn btn-outline-primary selecionar_libro"
+                                            th:data-id = "${libro.id}"
+                                            th:data-titulo = "${libro.titulo}"
+                                    >
+                                        Selecionar
+                                    </button>
+                                </td>
+                            </tr>
+                        </th:block>
                         </tbody>
                     </table>
                 </div>
@@ -144,9 +135,62 @@
     </div>
     <!-- FINAL MODAL -->
     <!-- FINAL CONTENIDO  -->
+    <script>
+        $(document).ready(function(){
+            let c = console
+            let libros = [];
+            let tbody_detalle = $("#tbody-lista-detalle");
+            let tbody_libros = $("#tbody-lista-libros");
+            $(".selecionar_libro").click(function(){
+                c.log("CLICK")
+                let self = $(this);
+                let id = self.data("id");
+                let titulo = self.data("titulo");
 
+                if(!libros.includes(id)){
+                    libros.push(id);
+                    tbody_detalle.append(`<tr>
+                        <td>${libros.length + 1}</td>
+                        <td>
+                            <input type="hidden" name="listadoLibroId[]" value="${id}">
+                            ${titulo}
+                        </td>
+                        <td><input name="listadoPrecio[]" type="number" class="text-right form-control" placeholder="0.00"></td>
+                        <td><input name="listadoCantidad[]" type="number" class="form-control input-cantidad" placeholder="0"></td>
+                        <td><input name="listadoSubtotal[]" type="number" class="text-right form-control input-subtotal" readonly placeholder="0.00"></td>
+                        <td><button type="button" class="btn btn-outline-danger">Quitar</button></td>
+                    </tr>`);
+                }
+
+            });
+
+            function calcularSubtotal(precio,cantidad,inputSubtotal){
+                let subtotal = precio * cantidad;
+                inputSubtotal.val(subtotal);
+                calcularTotal(subtotal)
+            }
+
+            function calcularTotal(){
+                let inputTotal = $("#total");
+                let total = 0;
+                $(".input-subtotal").each(function(index,input){
+                    total += parseFloat(input.value);
+                });
+                inputTotal.val(total);
+                c.log(inputTotal.val());
+            }
+            $("body").on("change",".input-cantidad",function(){
+                let inputCantidad = $(this);
+                let inputPrecio = inputCantidad.parent().prev().find("input");
+                let inputSubtotal = inputCantidad.parent().next().find("input");
+                calcularSubtotal(
+                    parseFloat(inputPrecio.val()),
+                    parseFloat(inputCantidad.val()),
+                        inputSubtotal
+                );
+            });
+        })
+    </script>
 </div>
-
-
 </body>
 </html>

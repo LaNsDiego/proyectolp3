@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+<body>
+<table class="table mt-5">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Libro</th>
+        <th scope="col">Precio</th>
+        <th>Cantidad</th>
+        <th>Subtotal</th>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="detalle : ${listadoDetalle}">
+        <tr>
+            <td th:text="${detalleStat.index +1}"></td>
+            <td th:text="${detalle.libroId}"></td>
+            <td th:text="${detalle.precio}"></td>
+            <td th:text="${detalle.cantidad}"></td>
+            <td th:text="${detalle.subtotal}"></td>
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+</body>
+</html>

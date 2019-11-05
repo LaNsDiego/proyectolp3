@@ -1,8 +1,16 @@
 package com.teamnab.demo.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Compra {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private int usuarioId;
+	private int bibliotecaId;
 	private int proveedorId;
 	private String fechaRegistro;
 	private String fechaCompra;
@@ -64,6 +72,12 @@ public class Compra {
     public void setDescripcion(String Descripcion) {
         this.descripcion = Descripcion;
     }
-	
-	
+
+    public int getBibliotecaId() {
+        return bibliotecaId;
+    }
+
+    public void setBibliotecaId(int bibliotecaId) {
+        this.bibliotecaId = bibliotecaId;
+    }
 }
