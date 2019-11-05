@@ -1,13 +1,7 @@
 package com.teamnab.demo.controller;
 
-import com.teamnab.demo.model.Compra;
-import com.teamnab.demo.model.CompraDetalle;
-import com.teamnab.demo.model.Libro;
-import com.teamnab.demo.model.Proveedor;
-import com.teamnab.demo.service.CompraDetalleService;
-import com.teamnab.demo.service.CompraService;
-import com.teamnab.demo.service.LibroService;
-import com.teamnab.demo.service.ProveedorService;
+import com.teamnab.demo.model.*;
+import com.teamnab.demo.service.*;
 import com.teamnab.demo.utility.Calendario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,6 +27,12 @@ public class CompraController {
     @Autowired
     private CompraDetalleService daoCompraDetalle;
 
+    @Autowired
+    private KardexService daoKardex;
+
+    @Autowired
+    private KardexDetalleService daoKardexDetalle;
+
     @GetMapping("/agregar")
     public String agregar(Model model){
         List<Proveedor> listadoProveedor = daoProveedor.findAll();
@@ -50,11 +50,11 @@ public class CompraController {
             @RequestParam(value="listadoPrecio[]") double[] listadoPrecio,
             @RequestParam(value="listadoSubtotal[]") double[] listadoSubtotal
     ){
-
         objCompra.setFechaRegistro(Calendario.hoy());
         System.out.println(objCompra.getTotal());
         daoCompra.save(objCompra);
         if(objCompra.getId() > 0){
+
             for(int i = 0 ; i < listadoLibroId.length ; i++){
                 CompraDetalle objNuevoDetalle = new CompraDetalle();
                 objNuevoDetalle.setCompraId(objCompra.getId());
@@ -63,6 +63,26 @@ public class CompraController {
                 objNuevoDetalle.setPrecio(listadoPrecio[i]);
                 objNuevoDetalle.setSubtotal(listadoSubtotal[i]);
                 daoCompraDetalle.save(objNuevoDetalle);
+                Kardex objKardex = daoKardex.getByBibliotecaIdAndLibroId(objCompra.getBibliotecaId(),objNuevoDetalle.getLibroId());
+                if( objKardex == null){
+                    objKardex = new Kardex();
+                    objKardex.setBibliotecaId(objCompra.getBibliotecaId());
+                    objKardex.setLibroId(objNuevoDetalle.getLibroId());
+                    objKardex.setRazonSocial("Biblioteca UPT");
+                    objKardex.setRuc("10987654217");
+                    objKardex.setCantidad(0);
+                    objKardex.setTotal(0);
+                    daoKardex.save(objKardex);
+                }
+
+                KardexDetalle objKardexDetalle = new KardexDetalle();
+                objKardexDetalle.setKardexId(objKardex.getId());
+                objKardexDetalle.setCantidad(objNuevoDetalle.getCantidad());
+                objKardexDetalle.setCostoUnitario(objNuevoDetalle.getPrecio());
+                objKardexDetalle.setTipoMovimientoId(1);
+                objKardexDetalle.setCostoTotal(objNuevoDetalle.getSubtotal());
+                daoKardexDetalle.save(objKardexDetalle);
+
             }
         }
 

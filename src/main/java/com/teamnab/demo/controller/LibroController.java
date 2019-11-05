@@ -70,4 +70,5 @@ public class LibroController {
         model.addAttribute("listadoLibro", daoLibro.findAll());
         return "/view/bibliotecaria/libro/listar";
     }
+
 }

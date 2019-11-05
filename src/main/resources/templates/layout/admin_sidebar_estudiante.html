@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+</head>
+<body>
+<div class="col l3  p-0 border-right" th:fragment="sidebar">
+    <ul class="p-0">
+        <div class="row p-3">
+            <div class="col-sm-4">
+                <img src="" width="80px" height="80px" th:src="@{/imagenes/portada.jpg}" class="rounded-circle" alt="imagen">
+            </div>
+            <div class="col-sm-8">
+                <div class="d-block font-weight-bold">Rol</div>
+                <div class="d-block">Nombre usuario</div>
+                <div class="d-block">Biblioteca de FAING</div>
+            </div>
+        </div>
+
+        <div class="dropdown-divider"></div>
+        <h5 class="pl-4">Prestamos</h5>
+        <a class="dropdown-item" href="#" th:href="@{/prestamo/carrito}">Por atender</a>
+        <a class="dropdown-item" href="#" th:href="@{/prestamo/historial}">Atendidos</a>
+
+        <div class="dropdown-divider"></div>
+        <h5 class="pl-4">Libros</h5>
+        <a class="dropdown-item" href="#" th:href="@{/catalogo}">Catalogo</a>
+
+    </ul>
+</div>
+
+</body>
+</html>

@@ -1,7 +1,13 @@
 package com.teamnab.demo.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class KardexDetalle {
-	
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	public int id;
     private int kardexId;
     private int tipoMovimientoId;
