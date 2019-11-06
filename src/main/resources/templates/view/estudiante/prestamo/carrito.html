@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/admin_layout_estudiante}">
+<head>
+    <meta charset="UTF-8">
+    <title>Bienvenido</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="row">
+        <nav class="container-fluid p-3 navbar navbar-light bg-light navbar-expand-sm border-bottom"
+             style="position: fixed;z-index: 20">
+            <h1>Lista de libros</h1>
+        </nav>
+    </div>
+
+    <!-- CONTENIDO  -->
+    <div class="container mt-5 pt-5">
+        <div class="row">
+
+
+
+            <th:block th:each="kardex : ${listadoPrestamoAtendido}">
+                <div class="col-3 mt-4">
+                    <div class="card pt-2">
+                        <div class="col-12 d-flex justify-content-center">
+                            <img src="" th:src="@{/imagenes/portada.jpg}" class="" alt="...">
+                        </div>
+                        <div class="card-body">
+                            <h6 class="card-title" th:text="${kardex.libroId}"></h6>
+                            <p class="card-text">Autor del libro</p>
+                            <p class="card-text">Biblioteca de FAING</p>
+                            <p class="card-text">Disponibles <span th:text="${kardex.cantidad}"></span></p>
+                            <a href="#" th:data-libroid="${kardex.libroId}" class="btn btn-primary w-100 btn-reservar">Reservar</a>
+                        </div>
+
+                    </div>
+                </div>
+            </th:block>
+
+        </div>
+    </div>

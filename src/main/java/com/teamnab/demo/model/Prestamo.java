@@ -8,11 +8,15 @@ import javax.persistence.Id;
 @Entity
 public class Prestamo {
 
+	public static final String RESERVADO = "RESERVADO";
+	public static final String ATENDIDO = "ATENDIDO";
+	public static final String DEVUELTO = "DEVUELTO";
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private int usuarioBibliotecariaId;
 	private int usuarioId;
 	private int libroId;
+	private int biblioteca;
 	private int cantidad;
 	private String fechaCreacion;
 	private String fechaAtencion;
@@ -89,5 +93,13 @@ public class Prestamo {
 
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+
+	public int getBiblioteca() {
+		return biblioteca;
+	}
+
+	public void setBiblioteca(int biblioteca) {
+		this.biblioteca = biblioteca;
 	}
 }
