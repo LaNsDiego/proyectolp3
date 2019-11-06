@@ -12,7 +12,7 @@
 <div layout:fragment="content">
     <div class="row">
         <nav class="container-fluid p-3 navbar navbar-light bg-light navbar-expand-sm border-bottom" style="position: fixed;z-index: 20">
-            <h1>Libros reservados</h1>
+            <h1>Libros prestados</h1>
         </nav>
     </div>
     <!-- CONTENIDO  -->
@@ -39,7 +39,7 @@
                         <td><span class="font-weight-bold" th:text="${prestamo.cantidad}">2</span></td>
                         <td><span class="badge badge-warning p-2" th:text="${prestamo.estado}"></span></td>
                         <td>
-                            <button type="button" th:data-prestamoid="${prestamo.id}" class="btn btn-outline-success btn-prestar">PRESTAR</button>
+                            <button type="button" th:data-prestamoid="${prestamo.id}" class="btn btn-outline-success btn-devolver">DEVOLVER</button>
                         </td>
                     </tr>
                 </th:block>
@@ -56,11 +56,11 @@
         let log = console.log;
 
         $(document).ready(function(){
-            $('.btn-prestar').click(function(){
+            $('.btn-devolver').click(function(){
                 let form = new FormData();
                 let prestamoId = $(this).data("prestamoid");
                 form.append("id",prestamoId);
-                fetch("/prestamo/prestar",{body:form,method:"post"})
+                fetch("/prestamo/devolver",{body:form,method:"post"})
                     .then(res => res.text())
                     .then(res => log(res));
             });

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/admin_layout_estudiante}">
+<head>
+    <meta charset="UTF-8">
+    <title>Bienvenido</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="row">
+        <nav class="container-fluid p-3 navbar navbar-light bg-light navbar-expand-sm border-bottom"
+             style="position: fixed;z-index: 20">
+            <h1>Historial de prestamos</h1>
+        </nav>
+    </div>
+
+    <!-- CONTENIDO  -->
+    <div class="container mt-5 pt-5">
+
+        <div class="row">
+
+            <th:block th:each="prestamo : ${listadoPrestamoAtendido}">
+                <div class="col-3 mt-4">
+                    <div class="card pt-2">
+                        <div class="col-12 d-flex justify-content-center">
+                            <img src="" th:src="@{/imagenes/portada.jpg}" class="" alt="...">
+                        </div>
+                        <div class="card-body">
+                            <h6 class="card-title" th:text="${prestamo.libro.titulo}"></h6>
+                            <h6 class="card-title"> Cantidad : <span th:text="${prestamo.cantidad}"></span></h6>
+                            <h6 class="card-title text-info font-weight-bold" th:text="${prestamo.estado}"></h6>
+                        </div>
+
+                    </div>
+                </div>
+            </th:block>
+
+        </div>
+
+        <div class="row">
+
+            <th:block th:each="prestamo : ${listadoPrestamoDevuelto}">
+                <div class="col-3 mt-4">
+                    <div class="card pt-2">
+                        <div class="col-12 d-flex justify-content-center">
+                            <img src="" th:src="@{/imagenes/portada.jpg}" class="" alt="...">
+                        </div>
+                        <div class="card-body">
+                            <h6 class="card-title" th:text="${prestamo.libro.titulo}"></h6>
+                            <h6 class="card-title"> Cantidad : <span th:text="${prestamo.cantidad}"></span></h6>
+                            <h6 class="card-title text-success font-weight-bold" th:text="${prestamo.estado}"></h6>
+                        </div>
+
+                    </div>
+                </div>
+            </th:block>
+
+        </div>
+
+    </div>
+
+</div>
+</body>
+</html>

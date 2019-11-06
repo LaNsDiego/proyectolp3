@@ -24,7 +24,7 @@
                 <div class="col-3 mt-4">
                     <div class="card pt-2">
                         <div class="col-12 d-flex justify-content-center">
-                            <img src="" th:src="@{/imagenes/portada.jpg}" class="" alt="...">
+                            <img src="" th:src="@{${'/imagenes/'+kardex.libro.portada}}" class="" alt="...">
                         </div>
                         <div class="card-body">
                             <h6 class="card-title" th:text="${kardex.libroId}"></h6>
@@ -51,7 +51,16 @@
 
         $(document).ready(function(){
             $('.btn-reservar').click(function(){
-               log(this)
+                let form = new FormData();
+                let libroId = $(this).data("libroid");
+                form.append("libroId",libroId);
+                form.append("usuarioId",1);
+                form.append("usuarioBibliotecariaId",1);
+                form.append("bibliotecaId",1);
+
+               fetch("/prestamo/reservar",{body:form,method:"post"})
+                   .then(res => res.text())
+                   .then(res => log(res));
             });
         });
     </script>

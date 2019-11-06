@@ -18,27 +18,29 @@
 
     <!-- CONTENIDO  -->
     <div class="container mt-5 pt-5">
-        <div class="row">
 
+            <div class="row">
 
+                <th:block th:each="prestamo : ${listadoPrestamo}">
+                    <div class="col-3 mt-4">
+                        <div class="card pt-2">
+                            <div class="col-12 d-flex justify-content-center">
+                                <img src="" th:src="@{/imagenes/portada.jpg}" class="" alt="...">
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title" th:text="${prestamo.libro.titulo}"></h6>
+                                <h6 class="card-title"> Cantidad : <span th:text="${prestamo.cantidad}"></span></h6>
+                                <h6 class="card-title text-warning font-weight-bold" th:text="${prestamo.estado}"></h6>
+                            </div>
 
-            <th:block th:each="kardex : ${listadoPrestamoAtendido}">
-                <div class="col-3 mt-4">
-                    <div class="card pt-2">
-                        <div class="col-12 d-flex justify-content-center">
-                            <img src="" th:src="@{/imagenes/portada.jpg}" class="" alt="...">
                         </div>
-                        <div class="card-body">
-                            <h6 class="card-title" th:text="${kardex.libroId}"></h6>
-                            <p class="card-text">Autor del libro</p>
-                            <p class="card-text">Biblioteca de FAING</p>
-                            <p class="card-text">Disponibles <span th:text="${kardex.cantidad}"></span></p>
-                            <a href="#" th:data-libroid="${kardex.libroId}" class="btn btn-primary w-100 btn-reservar">Reservar</a>
-                        </div>
-
                     </div>
-                </div>
-            </th:block>
+                </th:block>
 
-        </div>
+            </div>
+
     </div>
+
+</div>
+</body>
+</html>
