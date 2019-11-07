@@ -1,10 +1,13 @@
 package com.biblioteca.biblioteca.model;
 
+import javax.persistence.*;
+
+@Entity
 public class Biblioteca {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private int numero;
 	private int facultadId;
-	private int fechaCreacion;
 
     public int getId() {
         return id;
@@ -26,18 +29,11 @@ public class Biblioteca {
         return facultadId;
     }
 
-    public void setFacultadId(int FacultadId) {
-        this.facultadId = FacultadId;
+    public void setFacultadId(int facultadId) {
+        this.facultadId = facultadId;
     }
 
-    public int getFechaCreacion() {
-        return fechaCreacion;
-    }
-
-    public void setFechaCreacion(int FechaCreacion) {
-        this.fechaCreacion = FechaCreacion;
-    }
-
-	
-	
+    @OneToOne
+    @JoinColumn(name="facultadId" , referencedColumnName = "id", insertable=false,  updatable=false)
+    public Facultad facultad;
 }

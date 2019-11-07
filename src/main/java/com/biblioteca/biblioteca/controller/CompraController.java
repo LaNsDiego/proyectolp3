@@ -84,6 +84,10 @@ public class CompraController {
                 objKardexDetalle.setCostoTotal(objNuevoDetalle.getSubtotal());
                 daoKardexDetalle.save(objKardexDetalle);
 
+                Kardex actualKardex = daoKardex.getOne(objKardexDetalle.getKardexId());
+                actualKardex.setCantidad(actualKardex.getCantidad() + objKardexDetalle.getCantidad());
+                daoKardex.save(actualKardex);
+
             }
         }
 

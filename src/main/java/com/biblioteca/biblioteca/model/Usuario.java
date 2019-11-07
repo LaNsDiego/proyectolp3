@@ -1,9 +1,6 @@
 package com.biblioteca.biblioteca.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Usuario {
@@ -17,6 +14,7 @@ public class Usuario {
 	private String correo;
 	private int rolId;
 	private int facultadId;
+	private int bibliotecaId;
 
     public int getId() {
         return id;
@@ -89,4 +87,20 @@ public class Usuario {
     public void setFacultadId(int facultadId) {
         this.facultadId = facultadId;
     }
+
+    public int getBibliotecaId() {
+        return bibliotecaId;
+    }
+
+    public void setBibliotecaId(int bibliotecaId) {
+        this.bibliotecaId = bibliotecaId;
+    }
+
+    @OneToOne
+    @JoinColumn(name="rolId" , referencedColumnName = "id", insertable=false,  updatable=false)
+    public Rol rol;
+
+    @OneToOne
+    @JoinColumn(name="bibliotecaId" , referencedColumnName = "id", insertable=false,  updatable=false)
+    public Biblioteca biblioteca;
 }

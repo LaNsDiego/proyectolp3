@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
@@ -21,6 +22,9 @@ import java.util.Properties;
 public class PrestamoController {
 
     public static final String BASE_URL = "/prestamo";
+
+    @Autowired
+    HttpSession session ;
 
     @Autowired
     private PrestamoService daoPrestamo;
@@ -39,15 +43,17 @@ public class PrestamoController {
 
     @GetMapping("/carrito")
     public String carrito(Model model){
-        List<Prestamo> listadoPrestamo = daoPrestamo.findAllByUsuarioIdAndEstado(1,Prestamo.RESERVADO);
+        int usuarioId = Integer.valueOf(session.getAttribute("usuarioid").toString());
+        List<Prestamo> listadoPrestamo = daoPrestamo.findAllByUsuarioIdAndEstado(usuarioId,Prestamo.RESERVADO);
         model.addAttribute("listadoPrestamo",listadoPrestamo);
         return "/view/estudiante/prestamo/carrito";
     }
 
     @GetMapping("/historial")
     public String historial(Model model){
-        List<Prestamo> listadoPrestamoAtendido = daoPrestamo.findAllByUsuarioIdAndEstado(1,Prestamo.PRESTADO);
-        List<Prestamo> listadoPrestamoDevuelto = daoPrestamo.findAllByUsuarioIdAndEstado(1,Prestamo.DEVUELTO);
+        int usuarioId = Integer.valueOf(session.getAttribute("usuarioid").toString());
+        List<Prestamo> listadoPrestamoAtendido = daoPrestamo.findAllByUsuarioIdAndEstado(usuarioId,Prestamo.PRESTADO);
+        List<Prestamo> listadoPrestamoDevuelto = daoPrestamo.findAllByUsuarioIdAndEstado(usuarioId,Prestamo.DEVUELTO);
         model.addAttribute("listadoPrestamoAtendido",listadoPrestamoAtendido);
         model.addAttribute("listadoPrestamoDevuelto",listadoPrestamoDevuelto);
         return "/view/estudiante/prestamo/historial";

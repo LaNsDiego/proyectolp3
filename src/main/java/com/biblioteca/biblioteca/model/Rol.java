@@ -6,12 +6,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Facultad {
+public class Rol {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	public int id;
-	public String acronimo;
-	public String nombre;
-	public int universidadId;
+	private int id;
+	private String nombre;
 
 	public int getId() {
 		return id;
@@ -21,27 +19,11 @@ public class Facultad {
 		this.id = id;
 	}
 
-	public String getAcronimo() {
-		return acronimo;
-	}
-
-	public void setAcronimo(String acronimo) {
-		this.acronimo = acronimo;
-	}
-
 	public String getNombre() {
 		return nombre;
 	}
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-
-	public int getUniversidadId() {
-		return universidadId;
-	}
-
-	public void setUniversidadId(int universidadId) {
-		this.universidadId = universidadId;
 	}
 }
