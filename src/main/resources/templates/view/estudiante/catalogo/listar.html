@@ -27,7 +27,7 @@
                             <img src="" th:src="@{${'/imagenes/'+kardex.libro.portada}}" class="" alt="...">
                         </div>
                         <div class="card-body">
-                            <h6 class="card-title" th:text="${kardex.libroId}"></h6>
+                            <h6 class="card-title" th:text="${kardex.libro.titulo}"></h6>
                             <p class="card-text">Autor del libro</p>
                             <p class="card-text">Biblioteca de FAING</p>
                             <p class="card-text">Disponibles <span th:text="${kardex.cantidad}"></span></p>
