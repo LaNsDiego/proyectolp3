@@ -40,7 +40,7 @@ public class LibroController {
     private AutorService daoAutor;
 
     @GetMapping("/agregar")
-    public String agrear(Model model){
+    public String agregar(Model model){
         List<Categoria> listadoCategoria = daoCategoria.findAll();
         List<Autor> listadoAutor = daoAutor.findAll();
         List<Materia> listadoMateria = daoMateria.findAll();
@@ -51,7 +51,7 @@ public class LibroController {
     }
 
     @PostMapping("/agregar")
-    public String agrear(Libro objLibro ,
+    public String agregar(Libro objLibro ,
                          @RequestParam(value="autores[]") int[] autores ,
                          @RequestParam(value="materias[]") int[] materias ,
                          @RequestParam("imagen") MultipartFile imagen ){
