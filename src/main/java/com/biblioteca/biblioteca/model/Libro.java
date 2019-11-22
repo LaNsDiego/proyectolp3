@@ -1,17 +1,21 @@
 package com.biblioteca.biblioteca.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Libro {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+
+	@Column (unique = true)
 	private String titulo;
+	/*=============================*/
+	private String edicion;
+	@Column (unique = true)
+	private String isbn;
+	/*=============================*/
 	private String resumen;
 	private String portada;
 	private String idioma;
@@ -39,6 +43,16 @@ public class Libro {
 	public String getResumen() {
 		return resumen;
 	}
+
+	/* 22-nov-2019 ======Ingresamos el GetAndSet de edicion y isbn ================== */
+	public String getEdicion() { return edicion; }
+
+	public void setEdicion(String edicion) {this.edicion = edicion;	}
+
+	public String getIsbn() {return isbn;}
+
+	public void setIsbn(String isbn) {this.isbn = isbn;}
+	/* ========================================================== */
 
 	public void setResumen(String resumen) {
 		this.resumen = resumen;
