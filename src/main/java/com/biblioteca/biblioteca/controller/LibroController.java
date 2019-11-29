@@ -6,16 +6,15 @@ import com.biblioteca.biblioteca.utility.Calendario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.List;
 
 
@@ -56,7 +55,6 @@ public class LibroController {
                          @RequestParam(value="materias[]") int[] materias ,
                          @RequestParam("imagen") MultipartFile imagen ){
         objLibro.setFechaCreacion(Calendario.hoy());
-
         if(!imagen.isEmpty()){
             objLibro.setPortada(new Date().getTime() + imagen.getOriginalFilename());
             System.out.println(imagen.getOriginalFilename() + new Date().getTime());
@@ -77,7 +75,6 @@ public class LibroController {
 
 
         if(!imagen.isEmpty()) {
-
           Path ruta =Paths.get(DIRECTORIO_IMAGENES+objLibro.getPortada());
           System.out.println(ruta);
             try{
@@ -93,6 +90,15 @@ public class LibroController {
     public String listar(Model model){
         model.addAttribute("listadoLibro", daoLibro.findAll());
         return "/view/bibliotecaria/libro/listar";
+    }
+
+    @PostMapping("/validar/isbn")
+    public @ResponseBody boolean validarIsbn(@RequestParam String isbn , @RequestParam String edicion){
+        boolean esUnico = true;
+        if(daoLibro.findByIsbn(isbn) != null){
+            esUnico = false;
+        }
+        return esUnico;
     }
 
 }

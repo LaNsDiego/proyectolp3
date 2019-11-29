@@ -28,11 +28,12 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="titulo" class="col-sm-2 col-form-label">Titulo</label>
+                    <label for="titulo" class="col-sm-2 col-form-label">Portada</label>
                     <div class="col-sm-10">
-                        <input type="file" name="imagen" class="custom-file-input " id="validatedCustomFile" required>
-                        <label class="custom-file-label pl-2 pr-2" for="validatedCustomFile">Escoja una imagen...</label>
+                        <input type="file" name="imagen" class="custom-file-input " id="portada" required>
+                        <label class="custom-file-label pl-2 pr-2" for="portada">Escoja una imagen...</label>
                         <div class="invalid-feedback">Escoja una imagen por favor.</div>
+                        <img id="preview_image" src="" alt="previsualizacion" class="img-fluid">
                     </div>
                 </div>
 
@@ -59,6 +60,7 @@
                             <option value="español" selected>Español</option>
                             <option value="ingles" selected>Ingles</option>
                         </select>
+
                     </div>
                 </div>
 
@@ -107,6 +109,20 @@
                     </div>
                 </div>
 
+                <div class="form-group row">
+                    <label for="editorial" class="col-sm-2 col-form-label">Edicion</label>
+                    <div class="col-sm-10">
+                        <input type="number" name="edicion" class="form-control" id="edicion" placeholder="Número de la edicion">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="editorial" class="col-sm-2 col-form-label">ISBN</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="isbn" class="form-control" id="isbn" placeholder="Codigo ISBN">
+                    </div>
+                </div>
+
 
                 <div class="form-group row">
                     <label for="precio" class="col-sm-2 col-form-label">Precio</label>
@@ -120,7 +136,7 @@
                     <textarea class="form-control" id="resumen" name="resumen" rows="3"></textarea>
                 </div>
                 <div class="row">
-                    <button type="submit" class="col-12 btn btn-primary">Agregar</button>
+                    <button id="btn-agregar" type="submit" class="col-12 btn btn-primary ">Agregar</button>
                 </div>
             </form>
         </div>
@@ -132,12 +148,15 @@
     <script>
         $(document).ready(function(){
 
-            let materias = []
-            let autores = []
-            let contendor_materia = $("#contenedor-materias")
-            let contendor_autores = $("#contenedor-autores")
-            let cmbMateria = $("#materiaId")
-            let cmbAutor = $("#autorId")
+            let materias = [];
+            let autores = [];
+            let contendor_materia = $("#contenedor-materias");
+            let contendor_autores = $("#contenedor-autores");
+            let cmbMateria = $("#materiaId");
+            let cmbAutor = $("#autorId");
+            let inputImage = $("#portada");
+            let inputIsbn = $("#isbn");
+            let inputEdicion = $("#edicion");
             cmbMateria.change(function(){
                 console.log("CHANGE")
                 if(!materias.includes(this.value)){
@@ -162,20 +181,57 @@
 
             })
 
-            // $("#formAgregar").submit(function(e){
-            //     let form = new FormData(this);
-            //     form.append("materias" , materias);
-            //     form.append("autores" , autores);
-            //
-            //     fetch('/libro/agregar',{
-            //         method:'POST',
-            //         body: form
-            //     });
-            //
-            //     e.preventDefault();
-            // })
-        })
+            inputImage.change(function(){
+                console.log("CHANGE IMG")
+                console.log(this.files[0])
+            })
+            function loadImage(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        $('#preview_image').attr('src', e.target.result);
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+            inputImage.change(function() {
+                loadImage(this);
+            });
+
+
+            inputIsbn.change(function(){
+                fetchIsbnAndEdition(this.value);
+            });
+
+            function fetchIsbnAndEdition(isbn){
+                let form = new FormData();
+                form.append("isbn",isbn);
+                form.append("edicion",edicion);
+
+               if(isbn != "" && edicion != ""){
+                   fetch("/libro/validar/isbn",{
+                       method:"POST",
+                       body : form
+                   })
+                       .then(res => res.json() )
+                       .then(res => {
+                           console.log(res)
+                           if(!res){
+                               $("#btn-agregar").attr("disabled", true);
+                           }else{
+                               $("#btn-agregar").attr("disabled", false);
+                           }
+
+                       })
+               }
+            }
+        });
+        function cb(res){console.log(res)}
     </script>
+<!--    <script src="https://openlibrary.org/api/books?bibkeys=ISBN:0451526538&callback=cb"></script>-->
 </div>
 </body>
 </html>

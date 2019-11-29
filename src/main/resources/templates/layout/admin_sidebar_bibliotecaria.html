@@ -14,6 +14,9 @@
                 <div class="d-block font-weight-bold" th:text="${session.rol}">Rol</div>
                 <div class="d-block" th:text="${session.nombre}"></div>
                 <div class="d-block">Biblioteca <span th:text="${session.biblioteca}"></span> </div>
+                <div class="d-block p-2">
+                    <a class="btn btn-outline-primary" href="" th:href="@{/logout}">Cerrar Sesión</a>
+                </div>
             </div>
         </div>
 

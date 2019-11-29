@@ -115,7 +115,7 @@
                         <th:block th:each="libro : ${listadoLibro}">
                             <tr>
                                 <td th:text="${libroStat.index +1}"></td>
-                                <td><img th:src="@{/imagenes/portada.jpg}" th:width="60px" height="80px" alt="portada"></td>
+                                <td><img th:src="@{${'/imagenes/'+libro.portada}}" th:width="60px" height="80px" alt="portada"></td>
                                 <td th:text="${libro.titulo}"></td>
                                 <td>
                                     <button class="btn btn-outline-primary selecionar_libro"
