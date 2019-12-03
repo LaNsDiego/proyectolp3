@@ -1,9 +1,6 @@
 package com.biblioteca.biblioteca.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class LibroAutor {
@@ -35,4 +32,8 @@ public class LibroAutor {
 	public void setAutorId(int autorId) {
 		this.autorId = autorId;
 	}
+
+	@OneToOne
+	@JoinColumn(name="autorId" , referencedColumnName = "id", insertable=false,  updatable=false)
+	public Autor autor;
 }

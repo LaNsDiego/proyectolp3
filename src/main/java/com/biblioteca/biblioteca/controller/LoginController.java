@@ -36,6 +36,8 @@ public class LoginController {
             Usuario objUsuario = daoUsuario.findByCorreoAndClave(usuario.getCorreo(),usuario.getClave());
             if(objUsuario != null){
                 HttpSession session = request.getSession();
+
+                session.setAttribute("usuarioid",objUsuario.getId());
                 session.setAttribute("correo",objUsuario.getCorreo());
                 session.setAttribute("usuarioid",objUsuario.getId());
                 session.setAttribute("apellido",objUsuario.getApellidos());
@@ -44,6 +46,7 @@ public class LoginController {
                 int rolid = objUsuario.rol.getId();
                 if(rolid == 2){
                     session.setAttribute("biblioteca",objUsuario.biblioteca.getNumero() + " de " + objUsuario.biblioteca.facultad.getAcronimo());
+                    session.setAttribute("bibliotecaid",objUsuario.biblioteca.getId());
                     return "redirect:/bibliotecaria/principal";
                 }else{
                     return "redirect:/estudiante/principal";

@@ -97,11 +97,11 @@ public class Prestamo {
 		this.estado = estado;
 	}
 
-	public int getBiblioteca() {
+	public int getBibliotecaId() {
 		return bibliotecaId;
 	}
 
-	public void setBiblioteca(int bibliotecaId) {
+	public void setBibliotecaId(int bibliotecaId) {
 		this.bibliotecaId = bibliotecaId;
 	}
 

@@ -72,4 +72,8 @@ public class Kardex {
 	@OneToOne
 	@JoinColumn(name="libroId" , referencedColumnName = "id", insertable=false,  updatable=false)
 	public Libro libro;
+
+	@OneToOne
+	@JoinColumn(name="bibliotecaId" , referencedColumnName = "id", insertable=false,  updatable=false)
+	public Biblioteca biblioteca;
 }

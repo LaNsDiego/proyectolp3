@@ -28,10 +28,20 @@
                         </div>
                         <div class="card-body">
                             <h6 class="card-title" th:text="${kardex.libro.titulo}"></h6>
-                            <p class="card-text">Autor del libro</p>
-                            <p class="card-text">Biblioteca de FAING</p>
+                            <p class="card-text">
+                                <th:block th:each="libroAutor : ${kardex.libro.autores}">
+                                    <span class="text-primary" th:text="${libroAutor.autor.nombres + ' ' + libroAutor.autor.apellidos}"></span>
+                                </th:block>
+                            </p>
+                            <p class="card-text">
+                                Biblioteca #
+                                <span th:text="${kardex.biblioteca.numero}"></span>
+                                de
+                                <span th:text="${kardex.biblioteca.facultad.acronimo}"></span>
+
+                            </p>
                             <p class="card-text">Disponibles <span th:text="${kardex.cantidad}"></span></p>
-                            <a href="#" th:data-libroid="${kardex.libroId}" class="btn btn-primary w-100 btn-reservar">Reservar</a>
+                            <a href="#" th:data-libroid="${kardex.libroId}" th:data-bibliotecaid="${kardex.bibliotecaId}"  class="btn btn-primary w-100 btn-reservar">Reservar</a>
                         </div>
 
                     </div>
@@ -53,10 +63,10 @@
             $('.btn-reservar').click(function(){
                 let form = new FormData();
                 let libroId = $(this).data("libroid");
+                let bibliotecaId = parseInt($(this).data("bibliotecaid"));
+                console.log(bibliotecaId);
                 form.append("libroId",libroId);
-                form.append("usuarioId",1);
-                form.append("usuarioBibliotecariaId",1);
-                form.append("bibliotecaId",1);
+                form.append("bibliotecaId",bibliotecaId);
 
                fetch("/prestamo/reservar",{body:form,method:"post"})
                    .then(res => res.text())

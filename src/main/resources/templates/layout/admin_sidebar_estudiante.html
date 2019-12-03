@@ -8,11 +8,14 @@
     <ul class="p-0">
         <div class="row p-3">
             <div class="col-sm-4">
-                <img src="" width="80px" height="80px" th:src="@{/imagenes/portada.jpg}" class="rounded-circle" alt="imagen">
+                <img src="" width="80px" height="80px" th:src="@{/imagenes/perfil.png}" class="rounded-circle" alt="imagen">
             </div>
             <div class="col-sm-8">
                 <div class="d-block font-weight-bold" th:text="${session.rol}">Rol</div>
                 <div class="d-block" th:text="${session.nombre}"></div>
+                <div class="d-block p-2">
+                    <a class="btn btn-outline-primary" href="" th:href="@{/logout}">Cerrar Sesión</a>
+                </div>
             </div>
         </div>
 

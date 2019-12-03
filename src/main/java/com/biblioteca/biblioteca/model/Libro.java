@@ -2,6 +2,7 @@ package com.biblioteca.biblioteca.model;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Libro {
@@ -105,4 +106,8 @@ public class Libro {
 	public void setCategoriaId(int categoriaId) {
 		this.categoriaId = categoriaId;
 	}
+
+	@OneToMany(orphanRemoval=true, cascade={CascadeType.ALL})
+	@JoinColumn(name="libroId" , referencedColumnName = "id", insertable=false,  updatable=false)
+	public List<LibroAutor> autores;
 }

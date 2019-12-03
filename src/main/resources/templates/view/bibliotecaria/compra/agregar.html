@@ -23,17 +23,16 @@
                 <div class="form-group row">
                     <label for="usuario" class="col-sm-2 col-form-label">Usuario</label>
                     <input type="hidden" name="usuarioId" th:value="${session.usuarioid}">
-                    <input type="hidden" name="bibliotecaId" value="1">
+                    <input type="hidden" name="bibliotecaId" th:value="${session.bibliotecaid}">
                     <div class="col-sm-10">
-                        <input type="text" disabled class="form-control" id="usuario" value="">
+                        <input type="text" disabled class="form-control" id="usuario" th:value="${session.nombre + ' ' + session.apellido}">
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label for="proveedorId" class="col-sm-2 col-form-label">Proveedor</label>
                     <div class="col-sm-4">
-                        <select id="proveedorId" class="custom-select" name="proveedorId">
-                            <option disabled selected>Seleccione una opción</option>
+                        <select id="proveedorId" class="custom-select" name="proveedorId" required>
                             <th:block th:each="proveedor :${listadoProveedor}">
                                 <option value="" th:value="${proveedor.id}" th:text="${proveedor.nombre}"></option>
                             </th:block>
@@ -42,14 +41,14 @@
 
                     <label for="fechaCompra" class="col-sm-2 col-form-label text-right">Fec. Compra</label>
                     <div class="col-sm-4">
-                        <input id="fechaCompra" name="fechaCompra" name="fechaCompra" type="date" class="form-control">
+                        <input id="fechaCompra" name="fechaCompra" type="date" class="form-control" required>
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label for="descripcion" class="col-sm-2 col-form-label">Descripcion</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="una descripcion">
+                        <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="una descripcion" required>
                     </div>
                 </div>
 
@@ -115,7 +114,7 @@
                         <th:block th:each="libro : ${listadoLibro}">
                             <tr>
                                 <td th:text="${libroStat.index +1}"></td>
-                                <td><img th:src="@{${'/imagenes/'+libro.portada}}" th:width="60px" height="80px" alt="portada"></td>
+                                <td><img th:src="@{${'/imagenes/'+libro.portada}}" th:width="60px" height="80px" alt="portada de libro"></td>
                                 <td th:text="${libro.titulo}"></td>
                                 <td>
                                     <button class="btn btn-outline-primary selecionar_libro"
@@ -155,9 +154,9 @@
                             <input type="hidden" name="listadoLibroId[]" value="${id}">
                             ${titulo}
                         </td>
-                        <td><input name="listadoPrecio[]" type="number" class="text-right form-control" placeholder="0.00"></td>
-                        <td><input name="listadoCantidad[]" type="number" class="form-control input-cantidad" placeholder="0"></td>
-                        <td><input name="listadoSubtotal[]" type="number" class="text-right form-control input-subtotal" readonly placeholder="0.00"></td>
+                        <td><input name="listadoPrecio[]" type="number" class="text-right form-control" placeholder="0.00" required></td>
+                        <td><input name="listadoCantidad[]" type="number" class="form-control input-cantidad" placeholder="0" required></td>
+                        <td><input name="listadoSubtotal[]" type="number" class="text-right form-control input-subtotal" readonly placeholder="0.00" required></td>
                         <td><button type="button" class="btn btn-outline-danger">Quitar</button></td>
                     </tr>`);
                 }
