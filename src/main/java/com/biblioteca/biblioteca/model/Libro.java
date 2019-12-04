@@ -17,6 +17,8 @@ public class Libro {
 	@Column (unique = true)
 	private String isbn;
 	/*=============================*/
+
+	@Column(columnDefinition = "TEXT")
 	private String resumen;
 	private String portada;
 	private String idioma;

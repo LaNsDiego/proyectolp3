@@ -34,7 +34,7 @@
                 <th:block th:each="compra : ${listadoCompra}">
                     <tr>
                         <td th:text="${compraStat.index +1}"></td>
-                        <td th:text="${compra.usuarioId}"></td>
+                        <td th:text="${compra.usuario.nombres + ' ' + compra.usuario.apellidos}"></td>
                         <td th:text="${compra.total}"></td>
                         <td th:text="${compra.fechaCompra}"></td>
                         <td>

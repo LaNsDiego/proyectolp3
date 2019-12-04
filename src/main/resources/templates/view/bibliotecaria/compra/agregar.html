@@ -120,6 +120,7 @@
                                     <button class="btn btn-outline-primary selecionar_libro"
                                             th:data-id = "${libro.id}"
                                             th:data-titulo = "${libro.titulo}"
+                                            th:data-precio = "${libro.precio}"
                                     >
                                         Selecionar
                                     </button>
@@ -145,6 +146,7 @@
                 let self = $(this);
                 let id = self.data("id");
                 let titulo = self.data("titulo");
+                let precio = self.data("precio");
 
                 if(!libros.includes(id)){
                     libros.push(id);
@@ -154,7 +156,7 @@
                             <input type="hidden" name="listadoLibroId[]" value="${id}">
                             ${titulo}
                         </td>
-                        <td><input name="listadoPrecio[]" type="number" class="text-right form-control" placeholder="0.00" required></td>
+                        <td><input name="listadoPrecio[]" type="number" class="text-right form-control" value="${precio}" readonly required></td>
                         <td><input name="listadoCantidad[]" type="number" class="form-control input-cantidad" placeholder="0" required></td>
                         <td><input name="listadoSubtotal[]" type="number" class="text-right form-control input-subtotal" readonly placeholder="0.00" required></td>
                         <td><button type="button" class="btn btn-outline-danger">Quitar</button></td>

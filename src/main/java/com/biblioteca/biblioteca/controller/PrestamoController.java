@@ -38,14 +38,16 @@ public class PrestamoController {
     private KardexDetalleService daoKardexDetalle;
 
     @GetMapping("/reservados")
-    public String reservados(Model model){
-        model.addAttribute("listadoPrestamo",daoPrestamo.findAllByBibliotecaIdAndEstado(1,Prestamo.RESERVADO));
+    public String reservados(Model model,HttpServletRequest request){
+        int bibliotecaId = Integer.valueOf(request.getSession().getAttribute("bibliotecaid").toString());
+        model.addAttribute("listadoPrestamo",daoPrestamo.findAllByBibliotecaIdAndEstado(bibliotecaId,Prestamo.RESERVADO));
         return "/view/bibliotecaria/prestamo/reservados";
     }
 
     @GetMapping("/prestados")
-    public String atendidos(Model model){
-        model.addAttribute("listadoPrestamo",daoPrestamo.findAllByBibliotecaIdAndEstado(1,Prestamo.PRESTADO));
+    public String atendidos(Model model,HttpServletRequest request){
+        int bibliotecaId = Integer.valueOf(request.getSession().getAttribute("bibliotecaid").toString());
+        model.addAttribute("listadoPrestamo",daoPrestamo.findAllByBibliotecaIdAndEstado(bibliotecaId,Prestamo.PRESTADO));
         return "/view/bibliotecaria/prestamo/prestados";
     }
 

@@ -35,7 +35,7 @@
                     <tr>
                         <th scope="row">1</th>
                         <td> <span th:text="${prestamo.libro.titulo}"></span></td>
-                        <td><span th:text="${prestamo.usuario.nombres}"></span></td>
+                        <td><span th:text="${prestamo.usuario.nombres + ' '+ prestamo.usuario.apellidos }"></span></td>
                         <td><span class="font-weight-bold" th:text="${prestamo.cantidad}">2</span></td>
                         <td><span class="badge badge-warning p-2" th:text="${prestamo.estado}"></span></td>
                         <td>

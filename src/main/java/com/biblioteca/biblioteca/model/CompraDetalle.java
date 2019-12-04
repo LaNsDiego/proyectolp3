@@ -1,9 +1,6 @@
 package com.biblioteca.biblioteca.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class CompraDetalle {
@@ -63,4 +60,8 @@ public class CompraDetalle {
 	public void setSubtotal(double subtotal) {
 		this.subtotal = subtotal;
 	}
+
+	@OneToOne
+	@JoinColumn(name="libroId" , referencedColumnName = "id", insertable=false,  updatable=false)
+	public Libro libro;
 }

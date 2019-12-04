@@ -18,7 +18,7 @@
     <th:block th:each="detalle : ${listadoDetalle}">
         <tr>
             <td th:text="${detalleStat.index +1}"></td>
-            <td th:text="${detalle.libroId}"></td>
+            <td th:text="${detalle.libro.titulo}"></td>
             <td th:text="${detalle.precio}"></td>
             <td th:text="${detalle.cantidad}"></td>
             <td th:text="${detalle.subtotal}"></td>

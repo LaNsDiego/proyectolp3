@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -102,8 +103,9 @@ public class CompraController {
     }
 
     @GetMapping("/listar")
-    public String listar(Model model){
-        model.addAttribute("listadoCompra",daoCompra.findAllByBibliotecaId(1));
+    public String listar(Model model, HttpServletRequest request){
+        int bibliotecaId = Integer.valueOf(request.getSession().getAttribute("bibliotecaid").toString());
+        model.addAttribute("listadoCompra",daoCompra.findAllByBibliotecaId(bibliotecaId));
         return "/view/bibliotecaria/compra/listar";
     }
 }
