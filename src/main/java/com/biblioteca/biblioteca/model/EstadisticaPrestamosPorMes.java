@@ -4,13 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class EstadisticaPrestamosPorDia {
+public class EstadisticaPrestamosPorMes {
     @Id
     private int uid;
     private int total;
     private int anio;
     private int mes;
-    private int dia;
 
     public int getUid() {
         return uid;
@@ -44,11 +43,4 @@ public class EstadisticaPrestamosPorDia {
         this.mes = mes;
     }
 
-    public int getDia() {
-        return dia;
-    }
-
-    public void setDia(int dia) {
-        this.dia = dia;
-    }
 }

@@ -9,10 +9,144 @@
     <meta charset="UTF-8">
     <title>Bienvenido</title>
     <script th:src="@{/js/highcharts.js}"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
 </head>
 <body>
 <div layout:fragment="content" class="container">
     <h1>Reportes</h1>
+
+
+    <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+    <div id="container2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+    <script>
+        var series = []
+        var temp_series = []
+        var xAxis = []
+            temp_series["2019-01"] = {name: "2019-01" , data : Array(12).fill(0)};
+            temp_series["2019-02"] = {name: "2019-02" , data : Array(12).fill(0)};
+            temp_series["2019-03"] = {name: "2019-03" , data : Array(12).fill(0)};
+            temp_series["2019-04"] = {name: "2019-04" , data : Array(12).fill(0)};
+            temp_series["2019-05"] = {name: "2019-05" , data : Array(12).fill(0)};
+            temp_series["2019-06"] = {name: "2019-06" , data : Array(12).fill(0)};
+            temp_series["2019-07"] = {name: "2019-07" , data : Array(12).fill(0)};
+            temp_series["2019-08"] = {name: "2019-08" , data : Array(12).fill(0)};
+            temp_series["2019-09"] = {name: "2019-09" , data : Array(12).fill(0)};
+            temp_series["2019-10"] = {name: "2019-10" , data : Array(12).fill(0)};
+            temp_series["2019-11"] = {name: "2019-11" , data : Array(12).fill(0)};
+            temp_series["2019-12"] = {name: "2019-12" , data : Array(12).fill(0)};
+
+        fetch("/reporte/prestamos-por-mes")
+            .then(res => res.json())
+            .then(res => {
+                res.forEach(function (obj) {
+                    temp_series[obj.anio + "-" + obj.mes].data[parseInt(obj.mes)-1] = obj.total;
+                });
+
+                series.push(temp_series["2019-01"]);
+                series.push(temp_series["2019-02"]);
+                series.push(temp_series["2019-03"]);
+                series.push(temp_series["2019-04"]);
+                series.push(temp_series["2019-05"]);
+                series.push(temp_series["2019-06"]);
+                series.push(temp_series["2019-07"]);
+                series.push(temp_series["2019-08"]);
+                series.push(temp_series["2019-09"]);
+                series.push(temp_series["2019-10"]);
+                series.push(temp_series["2019-11"]);
+                series.push(temp_series["2019-12"]);
+
+                renderColumn(series)
+                // renderArea(series)
+            });
+
+        function renderColumn(series){
+            console.log(series)
+            Highcharts.chart('container', {
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Reporte - Total de prestamos por mes.'
+                },
+                subtitle: {
+                    text: 'Incluye todas las bibliotecas'
+                },
+                xAxis: {
+                    categories:['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Setiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Cantidad de prestamos'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0
+                    }
+                },
+                series:series
+            });
+
+        }
+
+        var seriePie = []
+        fetch("/reporte/prestamos-pier-chart")
+            .then(res => res.json())
+            .then(res => {
+                console.log(res)
+                res.forEach(function (obj) {
+                    seriePie.push({name : obj.biblioteca ,
+                        y : parseInt(obj.subtotal) / parseInt(obj.total)})
+                })
+
+                renderPieChart(seriePie)
+
+            });
+        function renderPieChart(series){
+            Highcharts.chart('container2', {
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: null,
+                    plotShadow: false,
+                    type: 'pie'
+                },
+                title: {
+                    text: 'Porcentaje Total de prestamos de Bibliotecas , 2019'
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                        }
+                    }
+                },
+                series: [{
+                    name: 'Brands',
+                    colorByPoint: true,
+                    data: series
+                }]
+            });
+        }
+
+    </script>
+
 </div>
 </body>
 </html>

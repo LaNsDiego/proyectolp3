@@ -1,11 +1,11 @@
 package com.biblioteca.biblioteca.controller;
 
 import com.biblioteca.biblioteca.model.EstadisticaLibroMasPrestaPorBiblioteca;
-import com.biblioteca.biblioteca.model.EstadisticaPrestamosPorDia;
-import com.biblioteca.biblioteca.model.Prestamo;
+import com.biblioteca.biblioteca.model.EstadisticaPrestamosPieChart;
+import com.biblioteca.biblioteca.model.EstadisticaPrestamosPorMes;
+import com.biblioteca.biblioteca.service.EstadisticaPrestamosPieChartService;
 import com.biblioteca.biblioteca.service.LibroMasPrestadoPorBibliotecaService;
-import com.biblioteca.biblioteca.service.PrestamoService;
-import com.biblioteca.biblioteca.service.PrestamosPorDiaService;
+import com.biblioteca.biblioteca.service.PrestamosPorMesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +24,10 @@ public class ReporteController {
     private LibroMasPrestadoPorBibliotecaService daoLibroReporte;
 
     @Autowired
-    private PrestamosPorDiaService daoPrestamoPorDia;
+    private PrestamosPorMesService daoPrestamoPorDia;
+
+    @Autowired
+    private EstadisticaPrestamosPieChartService daoPrestamoPieChart;
 
     @GetMapping("/libro-mas-prestado-por-biblioteca")
     public List<EstadisticaLibroMasPrestaPorBiblioteca> ReporteLibroMasPrestadoPorBiblioteca(){
@@ -36,8 +39,13 @@ public class ReporteController {
         return daoLibroReporte.libroMasPrestado();
     }
 
-    @GetMapping("/prestamos-por-dia")
-    public List<EstadisticaPrestamosPorDia> ReportePrestamosPorDia(){
-        return daoPrestamoPorDia.prestamosPorDia();
+    @GetMapping("/prestamos-por-mes")
+    public List<EstadisticaPrestamosPorMes> ReportePrestamosPorMes(){
+        return daoPrestamoPorDia.prestamosPorMes();
+    }
+
+    @GetMapping("/prestamos-pier-chart")
+    public List<EstadisticaPrestamosPieChart> ReportePrestamosPieChart(){
+        return daoPrestamoPieChart.prestamosPieChart();
     }
 }

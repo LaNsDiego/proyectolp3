@@ -62,7 +62,11 @@
                 form.append("id",prestamoId);
                 fetch("/prestamo/devolver",{body:form,method:"post"})
                     .then(res => res.text())
-                    .then(res => log(res));
+                    .then(res => {
+                        log(res)
+                        alert("transacción ejecutada correctamente")
+                        location.reload()
+                    });
             });
         });
     </script>

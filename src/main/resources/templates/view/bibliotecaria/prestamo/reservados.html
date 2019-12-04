@@ -62,7 +62,11 @@
                 form.append("id",prestamoId);
                 fetch("/prestamo/prestar",{body:form,method:"post"})
                     .then(res => res.text())
-                    .then(res => log(res));
+                    .then(res => {
+                        log(res)
+                        alert("atendido correctamente")
+                        location.reload()
+                    });
             });
         });
     </script>

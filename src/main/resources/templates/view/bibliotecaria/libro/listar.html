@@ -29,7 +29,7 @@
                     <th>Idioma</th>
                     <th>Fecha Creacion</th>
                     <th>Precio</th>
-                    <th>Acciones</th>
+<!--                    <th>Acciones</th>-->
                 </tr>
                 </thead>
                 <tbody>
@@ -42,10 +42,10 @@
                         <td th:text="${libro.fechaCreacion}"></td>
                         <td th:text="${libro.precio}"></td>
 
-                        <td>
-                            <a class="btn btn-outline-secondary" href="" th:href="@{/libro/editar/{id}(id=${libro.id})}">Editar</a>
+<!--                        <td>-->
+<!--                            <a class="btn btn-outline-secondary" href="" th:href="@{/libro/editar/{id}(id=${libro.id})}">Editar</a>-->
                             <!--                            <a class="btn-small" href="" th:href="@{/libro/eliminar/{id}(id=${empleado.id})}">Eliminar</a>-->
-                        </td>
+<!--                        </td>-->
                     </tr>
                 </th:block>
                 </tbody>
