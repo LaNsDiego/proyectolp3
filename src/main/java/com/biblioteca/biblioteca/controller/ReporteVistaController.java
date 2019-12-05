@@ -13,4 +13,12 @@ public class ReporteVistaController {
     public String reportes(){
         return "view/bibliotecaria/reporte/decisiones";
     }
+
+    @GetMapping("/mi-actividad")
+    public String miActividad(){
+        return "view/estudiante/reporte/actividad";
+    }
+
+
+
 }

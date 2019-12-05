@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/admin_layout_estudiante}"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Bienvenido</title>
+    <script th:src="@{/js/highcharts.js}"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+</head>
+<body>
+<div layout:fragment="content" class="container">
+    <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+
+    <script>
+        var temp_series = [];
+        var series = [];
+        temp_series["2019-01"] = [ "2019-01" ,0];
+        temp_series["2019-02"] = ["2019-02" ,0];
+        temp_series["2019-03"] = ["2019-03" ,0];
+        temp_series["2019-04"] = ["2019-04" ,0];
+        temp_series["2019-05"] = ["2019-05" ,0];
+        temp_series["2019-06"] = ["2019-06" ,0];
+        temp_series["2019-07"] = ["2019-07" ,0];
+        temp_series["2019-08"] = ["2019-08" ,0];
+        temp_series["2019-09"] = ["2019-09" ,0];
+        temp_series["2019-10"] = ["2019-10" ,0];
+        temp_series["2019-11"] = ["2019-11" ,0];
+        temp_series["2019-12"] = ["2019-12" ,0];
+        fetch("/reporte/prestamos-area-chart").then(res => res.json()).then(res =>{
+            console.log(res)
+            res.forEach(function (obj) {
+                temp_series[obj.anio + "-" + obj.mes] = [obj.anio + "-" + obj.mes,obj.total];
+
+            });
+            series.push(temp_series["2019-01"]);
+            series.push(temp_series["2019-02"]);
+            series.push(temp_series["2019-03"]);
+            series.push(temp_series["2019-04"]);
+            series.push(temp_series["2019-05"]);
+            series.push(temp_series["2019-06"]);
+            series.push(temp_series["2019-07"]);
+            series.push(temp_series["2019-08"]);
+            series.push(temp_series["2019-09"]);
+            series.push(temp_series["2019-10"]);
+            series.push(temp_series["2019-11"]);
+            series.push(temp_series["2019-12"]);
+            renderArea(series)
+        })
+
+
+
+        function renderArea(datos){
+            console.log(datos)
+            Highcharts.chart('container', {
+                chart: {
+                    type: 'area'
+                },
+                accessibility: {
+                    description: 'Ima.'
+                },
+                title: {
+                    text: 'Mis prestamos'
+                },
+                subtitle: {
+                    text: '2019'
+                },
+                xAxis: {
+                    type:'category',
+                    allowDecimals: false,
+                    labels: {
+                        formatter: function () {
+                            return this.value; // clean, unformatted number for year
+                        }
+                    }
+                },
+                yAxis: {
+                    title: {
+                        text: 'Cantidad de prestamos'
+                    }
+                },
+                tooltip: {
+                    pointFormat: '{series.name} realizé <b>{point.y}</b>'
+                },
+                plotOptions: {
+                    area: {
+
+                        marker: {
+                            enabled: false,
+                            symbol: 'circle',
+                            radius: 2,
+                            states: {
+                                hover: {
+                                    enabled: true
+                                }
+                            }
+                        }
+                    }
+                },
+                series: [
+                    {name: 'YO',
+                        data : datos}
+
+                ]
+            });
+        }
+    </script>
+</div>
+
+</body>
+</html>

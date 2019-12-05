@@ -1,8 +1,10 @@
 package com.biblioteca.biblioteca.controller;
 
 import com.biblioteca.biblioteca.model.EstadisticaLibroMasPrestaPorBiblioteca;
+import com.biblioteca.biblioteca.model.EstadisticaMisActividades;
 import com.biblioteca.biblioteca.model.EstadisticaPrestamosPieChart;
 import com.biblioteca.biblioteca.model.EstadisticaPrestamosPorMes;
+import com.biblioteca.biblioteca.service.EstadisticaMisActividadesService;
 import com.biblioteca.biblioteca.service.EstadisticaPrestamosPieChartService;
 import com.biblioteca.biblioteca.service.LibroMasPrestadoPorBibliotecaService;
 import com.biblioteca.biblioteca.service.PrestamosPorMesService;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -28,6 +31,9 @@ public class ReporteController {
 
     @Autowired
     private EstadisticaPrestamosPieChartService daoPrestamoPieChart;
+
+    @Autowired
+    private EstadisticaMisActividadesService daoMisActividades;
 
     @GetMapping("/libro-mas-prestado-por-biblioteca")
     public List<EstadisticaLibroMasPrestaPorBiblioteca> ReporteLibroMasPrestadoPorBiblioteca(){
@@ -47,5 +53,11 @@ public class ReporteController {
     @GetMapping("/prestamos-pier-chart")
     public List<EstadisticaPrestamosPieChart> ReportePrestamosPieChart(){
         return daoPrestamoPieChart.prestamosPieChart();
+    }
+
+    @GetMapping("/prestamos-area-chart")
+    public List<EstadisticaMisActividades> ReportePrestamosAreaChart(HttpServletRequest req){
+        Integer usuarioid = Integer.valueOf(req.getSession().getAttribute("usuarioid").toString());
+        return daoMisActividades.misActividades(usuarioid);
     }
 }
