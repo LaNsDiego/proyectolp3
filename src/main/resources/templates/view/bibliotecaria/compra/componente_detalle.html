@@ -15,13 +15,13 @@
     </tr>
     </thead>
     <tbody>
-    <th:block th:each="detalle : ${listadoDetalle}">
+    <th:block th:each="objDetalle : ${listadoDetalle}">
         <tr>
-            <td th:text="${detalleStat.index +1}"></td>
-            <td th:text="${detalle.libro.titulo}"></td>
-            <td th:text="${detalle.precio}"></td>
-            <td th:text="${detalle.cantidad}"></td>
-            <td th:text="${detalle.subtotal}"></td>
+            <td th:text="${objDetalleStat.index +1}"></td>
+            <td th:text="${objDetalle.libro.titulo}"></td>
+            <td th:text="${objDetalle.precio}"></td>
+            <td th:text="${objDetalle.cantidad}"></td>
+            <td th:text="${objDetalle.subtotal}"></td>
         </tr>
     </th:block>
     </tbody>

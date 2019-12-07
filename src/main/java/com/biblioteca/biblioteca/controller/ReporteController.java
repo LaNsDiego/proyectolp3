@@ -41,22 +41,22 @@ public class ReporteController {
     }
 
     @GetMapping("/libro-mas-prestado")
-    public List<EstadisticaLibroMasPrestaPorBiblioteca> ReporteLibroMasPrestado(){
+    public List<EstadisticaLibroMasPrestaPorBiblioteca> reporteLibroMasPrestado(){
         return daoLibroReporte.libroMasPrestado();
     }
 
     @GetMapping("/prestamos-por-mes")
-    public List<EstadisticaPrestamosPorMes> ReportePrestamosPorMes(){
+    public List<EstadisticaPrestamosPorMes> reportePrestamosPorMes(){
         return daoPrestamoPorDia.prestamosPorMes();
     }
 
     @GetMapping("/prestamos-pier-chart")
-    public List<EstadisticaPrestamosPieChart> ReportePrestamosPieChart(){
+    public List<EstadisticaPrestamosPieChart> reportePrestamosPieChart(){
         return daoPrestamoPieChart.prestamosPieChart();
     }
 
     @GetMapping("/prestamos-area-chart")
-    public List<EstadisticaMisActividades> ReportePrestamosAreaChart(HttpServletRequest req){
+    public List<EstadisticaMisActividades> reportePrestamosAreaChart(HttpServletRequest req){
         Integer usuarioid = Integer.valueOf(req.getSession().getAttribute("usuarioid").toString());
         return daoMisActividades.misActividades(usuarioid);
     }

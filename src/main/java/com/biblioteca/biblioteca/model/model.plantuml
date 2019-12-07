@@ -1,0 +1,592 @@
+@startuml
+
+title __MODEL's Class Diagram__\n
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.Accion {
+            - id : int
+            - valor : int
+            + getId()
+            + getValor()
+            + setId()
+            + setValor()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.Autor {
+            - apellidos : String
+            - id : int
+            - nombres : String
+            - pais : String
+            + getApellidos()
+            + getId()
+            + getNombres()
+            + getPais()
+            + setApellidos()
+            + setId()
+            + setNombres()
+            + setPais()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.Biblioteca {
+            - facultadId : int
+            - id : int
+            - numero : int
+            + getFacultadId()
+            + getId()
+            + getNumero()
+            + setFacultadId()
+            + setId()
+            + setNumero()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.Categoria {
+            - id : int
+            - nombre : String
+            + getId()
+            + getNombre()
+            + setId()
+            + setNombre()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.Compra {
+            - bibliotecaId : int
+            - descripcion : String
+            - fechaCompra : String
+            - fechaRegistro : String
+            - id : int
+            - proveedorId : int
+            - total : double
+            - usuarioId : int
+            + getBibliotecaId()
+            + getDescripcion()
+            + getFechaCompra()
+            + getFechaRegistro()
+            + getId()
+            + getProveedorId()
+            + getTotal()
+            + getUsuarioId()
+            + setBibliotecaId()
+            + setDescripcion()
+            + setFechaCompra()
+            + setFechaRegistro()
+            + setId()
+            + setProveedorId()
+            + setTotal()
+            + setUsuarioId()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.CompraDetalle {
+            - cantidad : int
+            - compraId : int
+            - id : int
+            - libroId : int
+            - precio : double
+            - subtotal : double
+            + getCantidad()
+            + getCompraId()
+            + getId()
+            + getLibroId()
+            + getPrecio()
+            + getSubtotal()
+            + setCantidad()
+            + setCompraId()
+            + setId()
+            + setLibroId()
+            + setPrecio()
+            + setSubtotal()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.EstadisticaLibroMasPrestaPorBiblioteca {
+            - acronimo : String
+            - biblioteca : int
+            - libro : int
+            - maximo : int
+            - titulo : String
+            + getAcronimo()
+            + getBiblioteca()
+            + getLibro()
+            + getMaximo()
+            + getTitulo()
+            + setAcronimo()
+            + setBiblioteca()
+            + setLibro()
+            + setMaximo()
+            + setTitulo()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.EstadisticaMisActividades {
+            - anio : int
+            - mes : int
+            - total : int
+            - usuarioId : int
+            + getAnio()
+            + getMes()
+            + getTotal()
+            + getUsuarioId()
+            + setAnio()
+            + setMes()
+            + setTotal()
+            + setUsuarioId()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.EstadisticaPrestamosPieChart {
+            - biblioteca : String
+            - bibliotecaId : int
+            - subtotal : int
+            - total : int
+            + getBiblioteca()
+            + getBibliotecaId()
+            + getSubtotal()
+            + getTotal()
+            + setBiblioteca()
+            + setBibliotecaId()
+            + setSubtotal()
+            + setTotal()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.EstadisticaPrestamosPorMes {
+            - anio : int
+            - mes : int
+            - total : int
+            - uid : int
+            + getAnio()
+            + getMes()
+            + getTotal()
+            + getUid()
+            + setAnio()
+            + setMes()
+            + setTotal()
+            + setUid()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.Facultad {
+            + acronimo : String
+            + id : int
+            + nombre : String
+            + universidadId : int
+            + getAcronimo()
+            + getId()
+            + getNombre()
+            + getUniversidadId()
+            + setAcronimo()
+            + setId()
+            + setNombre()
+            + setUniversidadId()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.Kardex {
+            - bibliotecaId : int
+            - cantidad : int
+            - id : int
+            - libroId : int
+            - razonSocial : String
+            - ruc : String
+            - total : double
+            + getBibliotecaId()
+            + getCantidad()
+            + getId()
+            + getLibroId()
+            + getRazonSocial()
+            + getRuc()
+            + getTotal()
+            + setBibliotecaId()
+            + setCantidad()
+            + setId()
+            + setLibroId()
+            + setRazonSocial()
+            + setRuc()
+            + setTotal()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.KardexDetalle {
+            + id : int
+            - cantidad : int
+            - costoTotal : double
+            - costoUnitario : double
+            - kardexId : int
+            - tipoMovimientoId : int
+            + getCantidad()
+            + getCostoTotal()
+            + getCostoUnitario()
+            + getId()
+            + getKardexId()
+            + getTipoMovimientoId()
+            + setCantidad()
+            + setCostoTotal()
+            + setCostoUnitario()
+            + setId()
+            + setKardexId()
+            + setTipoMovimientoId()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.Libro {
+            + autores : List<LibroAutor>
+            - categoriaId : int
+            - edicion : String
+            - editorial : String
+            - fechaCreacion : String
+            - id : int
+            - idioma : String
+            - isbn : String
+            - portada : String
+            - precio : double
+            - resumen : String
+            - titulo : String
+            + getCategoriaId()
+            + getEdicion()
+            + getEditorial()
+            + getFechaCreacion()
+            + getId()
+            + getIdioma()
+            + getIsbn()
+            + getPortada()
+            + getPrecio()
+            + getResumen()
+            + getTitulo()
+            + setCategoriaId()
+            + setEdicion()
+            + setEditorial()
+            + setFechaCreacion()
+            + setId()
+            + setIdioma()
+            + setIsbn()
+            + setPortada()
+            + setPrecio()
+            + setResumen()
+            + setTitulo()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.LibroAutor {
+            - autorId : int
+            - id : int
+            - libroId : int
+            + getAutorId()
+            + getId()
+            + getLibroId()
+            + setAutorId()
+            + setId()
+            + setLibroId()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.LibroMateria {
+            - id : int
+            - libroId : int
+            - materiaId : int
+            + getId()
+            + getLibroId()
+            + getMateriaId()
+            + setId()
+            + setLibroId()
+            + setMateriaId()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.Materia {
+            - id : int
+            - nombre : String
+            + getId()
+            + getNombre()
+            + setId()
+            + setNombre()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.Modulo {
+            + id : int
+            + nombre : String
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.Prestamo {
+            {static} + DEVUELTO : String
+            {static} + PRESTADO : String
+            {static} + RESERVADO : String
+            - bibliotecaId : int
+            - cantidad : int
+            - estado : String
+            - fechaAtencion : String
+            - fechaCreacion : String
+            - fechaDevolucion : String
+            - id : int
+            - libroId : int
+            - usuarioBibliotecariaId : int
+            - usuarioId : int
+            + getBibliotecaId()
+            + getCantidad()
+            + getEstado()
+            + getFechaAtencion()
+            + getFechaCreacion()
+            + getFechaDevolucion()
+            + getId()
+            + getLibroId()
+            + getUsuarioBibliotecariaId()
+            + getUsuarioId()
+            + setBibliotecaId()
+            + setCantidad()
+            + setEstado()
+            + setFechaAtencion()
+            + setFechaCreacion()
+            + setFechaDevolucion()
+            + setId()
+            + setLibroId()
+            + setUsuarioBibliotecariaId()
+            + setUsuarioId()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.PrestamoDetalle {
+            - Cantidad : int
+            - Id : int
+            - LibroId : int
+            - PrestamoId : int
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.Proveedor {
+            + direccion : String
+            + id : int
+            + nombre : String
+            + ruc : String
+            + telefono : String
+            + getDireccion()
+            + getId()
+            + getNombre()
+            + getRuc()
+            + getTelefono()
+            + setDireccion()
+            + setId()
+            + setNombre()
+            + setRuc()
+            + setTelefono()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.Rol {
+            - id : int
+            - nombre : String
+            + getId()
+            + getNombre()
+            + setId()
+            + setNombre()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.Universidad {
+            + Id : int
+            + Nombre : String
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.Usuario {
+            - apellidos : String
+            - bibliotecaId : int
+            - clave : String
+            - codigo : String
+            - correo : String
+            - dni : String
+            - facultadId : int
+            - id : int
+            - nombres : String
+            - rolId : int
+            + getApellidos()
+            + getBibliotecaId()
+            + getClave()
+            + getCodigo()
+            + getCorreo()
+            + getDni()
+            + getFacultadId()
+            + getId()
+            + getNombres()
+            + getRolId()
+            + setApellidos()
+            + setBibliotecaId()
+            + setClave()
+            + setCodigo()
+            + setCorreo()
+            + setDni()
+            + setFacultadId()
+            + setId()
+            + setNombres()
+            + setRolId()
+        }
+      }
+    }
+  }
+  
+
+  com.biblioteca.biblioteca.model.Biblioteca o-- com.biblioteca.biblioteca.model.Facultad : facultad
+  com.biblioteca.biblioteca.model.Compra o-- com.biblioteca.biblioteca.model.Usuario : usuario
+  com.biblioteca.biblioteca.model.CompraDetalle o-- com.biblioteca.biblioteca.model.Libro : libro
+  com.biblioteca.biblioteca.model.EstadisticaLibroMasPrestaPorBiblioteca .up.|> java.io.Serializable
+  com.biblioteca.biblioteca.model.Kardex o-- com.biblioteca.biblioteca.model.Biblioteca : biblioteca
+  com.biblioteca.biblioteca.model.Kardex o-- com.biblioteca.biblioteca.model.Libro : libro
+  com.biblioteca.biblioteca.model.LibroAutor o-- com.biblioteca.biblioteca.model.Autor : autor
+  com.biblioteca.biblioteca.model.Prestamo o-- com.biblioteca.biblioteca.model.Libro : libro
+  com.biblioteca.biblioteca.model.Prestamo o-- com.biblioteca.biblioteca.model.Usuario : usuario
+  com.biblioteca.biblioteca.model.Usuario o-- com.biblioteca.biblioteca.model.Biblioteca : biblioteca
+  com.biblioteca.biblioteca.model.Usuario o-- com.biblioteca.biblioteca.model.Rol : rol
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

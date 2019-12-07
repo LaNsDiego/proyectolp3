@@ -33,8 +33,8 @@
                     <label for="proveedorId" class="col-sm-2 col-form-label">Proveedor</label>
                     <div class="col-sm-4">
                         <select id="proveedorId" class="custom-select" name="proveedorId" required>
-                            <th:block th:each="proveedor :${listadoProveedor}">
-                                <option value="" th:value="${proveedor.id}" th:text="${proveedor.nombre}"></option>
+                            <th:block th:each="objProveedor :${listadoProveedor}">
+                                <option value="" th:value="${objProveedor.id}" th:text="${objProveedor.nombre}"></option>
                             </th:block>
                         </select>
                     </div>
@@ -57,7 +57,7 @@
                 <div class="form-group row">
                     <label class="col-sm-6 col-form-label">Detalle de compra</label>
                     <div class="col-6">
-                        <button id="btnListaLibros" type="button" class="col btn btn-secondary" data-toggle="modal" data-target="#modalListaLibro">Listar libros</button>
+                        <button type="button" class="col btn btn-secondary" data-toggle="modal" data-target="#modalListaLibro">Listar libros</button>
                     </div>
 
                 </div>
@@ -111,16 +111,16 @@
                         </tr>
                         </thead>
                         <tbody id="tbody-lista-libros">
-                        <th:block th:each="libro : ${listadoLibro}">
+                        <th:block th:each="objLibro : ${listadoLibro}">
                             <tr>
-                                <td th:text="${libroStat.index +1}"></td>
-                                <td><img th:src="@{${'/imagenes/'+libro.portada}}" th:width="60px" height="80px" alt="portada de libro"></td>
-                                <td th:text="${libro.titulo}"></td>
+                                <td th:text="${objLibroStat.index +1}"></td>
+                                <td><img th:src="@{${'/imagenes/'+objLibro.portada}}" th:width="60px" height="80px" alt="portada de libro"></td>
+                                <td th:text="${objLibro.titulo}"></td>
                                 <td>
                                     <button class="btn btn-outline-primary selecionar_libro"
-                                            th:data-id = "${libro.id}"
-                                            th:data-titulo = "${libro.titulo}"
-                                            th:data-precio = "${libro.precio}"
+                                            th:data-id = "${objLibro.id}"
+                                            th:data-titulo = "${objLibro.titulo}"
+                                            th:data-precio = "${objLibro.precio}"
                                     >
                                         Selecionar
                                     </button>
@@ -142,7 +142,7 @@
             let tbody_detalle = $("#tbody-lista-detalle");
             let tbody_libros = $("#tbody-lista-libros");
             $(".selecionar_libro").click(function(){
-                c.log("CLICK")
+
                 let self = $(this);
                 let id = self.data("id");
                 let titulo = self.data("titulo");
@@ -180,15 +180,18 @@
                 inputTotal.val(total);
                 c.log(inputTotal.val());
             }
+
             $("body").on("change",".input-cantidad",function(){
                 let inputCantidad = $(this);
                 let inputPrecio = inputCantidad.parent().prev().find("input");
                 let inputSubtotal = inputCantidad.parent().next().find("input");
+
                 calcularSubtotal(
                     parseFloat(inputPrecio.val()),
                     parseFloat(inputCantidad.val()),
                         inputSubtotal
                 );
+
             });
         })
     </script>

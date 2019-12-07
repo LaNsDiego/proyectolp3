@@ -42,8 +42,8 @@
                     <label for="categoriaId" class="col-sm-2 col-form-label">Categoria</label>
                     <div class="col-sm-10">
                         <select id="categoriaId" name="categoriaId" class="custom-select" required>
-                            <th:block th:each="categoria :${listadoCategoria}">
-                                <option value="" th:value="${categoria.id}" th:text="${categoria.nombre}"></option>
+                            <th:block th:each="objCategoria :${listadoCategoria}">
+                                <option value="" th:value="${objCategoria.id}" th:text="${objCategoria.nombre}"></option>
                             </th:block>
                         </select>
                     </div>
@@ -67,8 +67,8 @@
                     <div class="col-sm-10">
                         <select id="materiaId"  class="custom-select" required>
                             <option disabled selected>Escoja una opción porfavor.</option>
-                            <th:block th:each="materia :${listadoMateria}">
-                                <option value="" th:value="${materia.id}" th:text="${materia.nombre}"></option>
+                            <th:block th:each="objMateria :${listadoMateria}">
+                                <option value="" th:value="${objMateria.id}" th:text="${objMateria.nombre}"></option>
                             </th:block>
                         </select>
                     </div>
@@ -87,8 +87,8 @@
                     <div class="col-sm-10">
                         <select id="autorId" class="custom-select" required>
                             <option disabled selected>Escoja una opción porfavor.</option>
-                            <th:block th:each="autor :${listadoAutor}">
-                                <option value="" th:value="${autor.id}" th:text="${(autor.nombres + ' ' + autor.apellidos )}"></option>
+                            <th:block th:each="objAutor :${listadoAutor}">
+                                <option value="" th:value="${objAutor.id}" th:text="${(objAutor.nombres + ' ' + objAutor.apellidos )}"></option>
                             </th:block>
                         </select>
                     </div>

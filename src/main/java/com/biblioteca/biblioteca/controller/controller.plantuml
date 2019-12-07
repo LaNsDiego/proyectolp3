@@ -1,0 +1,166 @@
+@startuml
+
+title __CONTROLLER's Class Diagram__\n
+
+  namespace w {
+    namespace om.biblioteca.biblioteca {
+      namespace controller {
+        class com.biblioteca.biblioteca.controller.BibliotecariaController {
+            {static} + BASE_URL : String
+            ~ session : HttpSession
+            + principal()
+        }
+      }
+    }
+  }
+  
+
+  namespace w {
+    namespace om.biblioteca.biblioteca {
+      namespace controller {
+        class com.biblioteca.biblioteca.controller.CompraController {
+            {static} + BASE_URL : String
+            + agregar()
+            + agregar()
+            + listar()
+            + listar()
+        }
+      }
+    }
+  }
+  
+
+  namespace w {
+    namespace om.biblioteca.biblioteca {
+      namespace controller {
+        class com.biblioteca.biblioteca.controller.EstudianteController {
+            {static} + BASE_URL : String
+            + principal()
+        }
+      }
+    }
+  }
+  
+
+  namespace w {
+    namespace om.biblioteca.biblioteca {
+      namespace controller {
+        class com.biblioteca.biblioteca.controller.KardexController {
+            {static} - BASE_URL : String
+            + listar()
+        }
+      }
+    }
+  }
+  
+
+  namespace w {
+    namespace om.biblioteca.biblioteca {
+      namespace controller {
+        class com.biblioteca.biblioteca.controller.LibroController {
+            {static} + BASE_URL : String
+            - DIRECTORIO_IMAGENES : String
+            + agregar()
+            + agregar()
+            + listar()
+            + validarIsbn()
+        }
+      }
+    }
+  }
+  
+
+  namespace w {
+    namespace om.biblioteca.biblioteca {
+      namespace controller {
+        class com.biblioteca.biblioteca.controller.LoginController {
+            {static} + BASE_URL : String
+            ~ httpSessionFactory : ObjectFactory<HttpSession>
+            + login()
+            + login()
+            + logout()
+        }
+      }
+    }
+  }
+  
+
+  namespace w {
+    namespace om.biblioteca.biblioteca {
+      namespace controller {
+        class com.biblioteca.biblioteca.controller.PrestamoController {
+            {static} + BASE_URL : String
+            ~ session : HttpSession
+            + atendidos()
+            + carrito()
+            + devolver()
+            + historial()
+            + prestar()
+            + reservados()
+            + reservar()
+        }
+      }
+    }
+  }
+  
+
+  namespace w {
+    namespace om.biblioteca.biblioteca {
+      namespace controller {
+        class com.biblioteca.biblioteca.controller.ReporteController {
+            {static} + BASE_URL : String
+            + ReporteLibroMasPrestadoPorBiblioteca()
+            + reporteLibroMasPrestado()
+            + reportePrestamosAreaChart()
+            + reportePrestamosPieChart()
+            + reportePrestamosPorMes()
+        }
+      }
+    }
+  }
+  
+
+  namespace w {
+    namespace om.biblioteca.biblioteca {
+      namespace controller {
+        class com.biblioteca.biblioteca.controller.ReporteVistaController {
+            {static} + BASE_URL : String
+            + misPrestamos()
+            + reportes()
+        }
+      }
+    }
+  }
+  
+
+  com.biblioteca.biblioteca.controller.CompraController o-- com.biblioteca.biblioteca.service.CompraService : daoCompra
+  com.biblioteca.biblioteca.controller.CompraController o-- com.biblioteca.biblioteca.service.CompraDetalleService : daoCompraDetalle
+  com.biblioteca.biblioteca.controller.CompraController o-- com.biblioteca.biblioteca.service.KardexService : daoKardex
+  com.biblioteca.biblioteca.controller.CompraController o-- com.biblioteca.biblioteca.service.KardexDetalleService : daoKardexDetalle
+  com.biblioteca.biblioteca.controller.CompraController o-- com.biblioteca.biblioteca.service.LibroService : daoLibro
+  com.biblioteca.biblioteca.controller.CompraController o-- com.biblioteca.biblioteca.service.ProveedorService : daoProveedor
+  com.biblioteca.biblioteca.controller.KardexController o-- com.biblioteca.biblioteca.service.KardexService : daoKardex
+  com.biblioteca.biblioteca.controller.LibroController o-- com.biblioteca.biblioteca.service.AutorService : daoAutor
+  com.biblioteca.biblioteca.controller.LibroController o-- com.biblioteca.biblioteca.service.CategoiaService : daoCategoria
+  com.biblioteca.biblioteca.controller.LibroController o-- com.biblioteca.biblioteca.service.LibroService : daoLibro
+  com.biblioteca.biblioteca.controller.LibroController o-- com.biblioteca.biblioteca.service.LibroAutorService : daoLibroAutor
+  com.biblioteca.biblioteca.controller.LibroController o-- com.biblioteca.biblioteca.service.LibroMateriaService : daoLibroMateria
+  com.biblioteca.biblioteca.controller.LibroController o-- com.biblioteca.biblioteca.service.MateriaService : daoMateria
+  com.biblioteca.biblioteca.controller.LoginController o-- com.biblioteca.biblioteca.service.UsuarioService : daoUsuario
+  com.biblioteca.biblioteca.controller.PrestamoController o-- com.biblioteca.biblioteca.service.KardexService : daoKardex
+  com.biblioteca.biblioteca.controller.PrestamoController o-- com.biblioteca.biblioteca.service.KardexDetalleService : daoKardexDetalle
+  com.biblioteca.biblioteca.controller.PrestamoController o-- com.biblioteca.biblioteca.service.PrestamoService : daoPrestamo
+  com.biblioteca.biblioteca.controller.ReporteController o-- com.biblioteca.biblioteca.service.LibroMasPrestadoPorBibliotecaService : daoLibroReporte
+  com.biblioteca.biblioteca.controller.ReporteController o-- com.biblioteca.biblioteca.service.EstadisticaMisActividadesService : daoMisActividades
+  com.biblioteca.biblioteca.controller.ReporteController o-- com.biblioteca.biblioteca.service.EstadisticaPrestamosPieChartService : daoPrestamoPieChart
+  com.biblioteca.biblioteca.controller.ReporteController o-- com.biblioteca.biblioteca.service.PrestamosPorMesService : daoPrestamoPorDia
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

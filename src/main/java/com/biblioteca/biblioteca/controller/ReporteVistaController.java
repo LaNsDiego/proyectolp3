@@ -15,7 +15,7 @@ public class ReporteVistaController {
     }
 
     @GetMapping("/mi-actividad")
-    public String miActividad(){
+    public String misPrestamos(){
         return "view/estudiante/reporte/actividad";
     }
 

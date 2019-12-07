@@ -1,0 +1,570 @@
+@startuml
+
+title __BIBLIOTECA's Class Diagram__\n
+
+  namespace  {
+    class MavenWrapperDownloader {
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      class com.biblioteca.biblioteca.BibliotecaApplication {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace controller {
+        class com.biblioteca.biblioteca.controller.BibliotecariaController {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace controller {
+        class com.biblioteca.biblioteca.controller.CompraController {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace controller {
+        class com.biblioteca.biblioteca.controller.EstudianteController {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace controller {
+        class com.biblioteca.biblioteca.controller.KardexController {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace controller {
+        class com.biblioteca.biblioteca.controller.LibroController {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace controller {
+        class com.biblioteca.biblioteca.controller.LoginController {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace controller {
+        class com.biblioteca.biblioteca.controller.PrestamoController {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace controller {
+        class com.biblioteca.biblioteca.controller.ReporteController {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace controller {
+        class com.biblioteca.biblioteca.controller.ReporteVistaController {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.Accion {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.Autor {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.Biblioteca {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.Categoria {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.Compra {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.CompraDetalle {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.EstadisticaLibroMasPrestaPorBiblioteca {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.EstadisticaMisActividades {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.EstadisticaPrestamosPieChart {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.EstadisticaPrestamosPorMes {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.Facultad {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.Kardex {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.KardexDetalle {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.Libro {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.LibroAutor {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.LibroMateria {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.Materia {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.Modulo {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.Prestamo {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.PrestamoDetalle {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.Proveedor {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.Rol {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.Universidad {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace model {
+        class com.biblioteca.biblioteca.model.Usuario {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace service {
+        interface com.biblioteca.biblioteca.service.AutorService {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace service {
+        interface com.biblioteca.biblioteca.service.CategoiaService {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace service {
+        interface com.biblioteca.biblioteca.service.CompraDetalleService {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace service {
+        interface com.biblioteca.biblioteca.service.CompraService {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace service {
+        interface com.biblioteca.biblioteca.service.EstadisticaMisActividadesService {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace service {
+        interface com.biblioteca.biblioteca.service.EstadisticaPrestamosPieChartService {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace service {
+        interface com.biblioteca.biblioteca.service.KardexDetalleService {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace service {
+        interface com.biblioteca.biblioteca.service.KardexService {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace service {
+        interface com.biblioteca.biblioteca.service.LibroAutorService {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace service {
+        interface com.biblioteca.biblioteca.service.LibroMasPrestadoPorBibliotecaService {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace service {
+        interface com.biblioteca.biblioteca.service.LibroMateriaService {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace service {
+        interface com.biblioteca.biblioteca.service.LibroService {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace service {
+        interface com.biblioteca.biblioteca.service.MateriaService {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace service {
+        interface com.biblioteca.biblioteca.service.PrestamoService {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace service {
+        interface com.biblioteca.biblioteca.service.PrestamosPorMesService {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace service {
+        interface com.biblioteca.biblioteca.service.ProveedorService {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace service {
+        interface com.biblioteca.biblioteca.service.UsuarioService {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.biblioteca.biblioteca {
+      namespace utility {
+        abstract class com.biblioteca.biblioteca.utility.Calendario {
+        }
+      }
+    }
+  }
+  
+
+  com.biblioteca.biblioteca.controller.CompraController o-- com.biblioteca.biblioteca.service.CompraService : daoCompra
+  com.biblioteca.biblioteca.controller.CompraController o-- com.biblioteca.biblioteca.service.CompraDetalleService : daoCompraDetalle
+  com.biblioteca.biblioteca.controller.CompraController o-- com.biblioteca.biblioteca.service.KardexService : daoKardex
+  com.biblioteca.biblioteca.controller.CompraController o-- com.biblioteca.biblioteca.service.KardexDetalleService : daoKardexDetalle
+  com.biblioteca.biblioteca.controller.CompraController o-- com.biblioteca.biblioteca.service.LibroService : daoLibro
+  com.biblioteca.biblioteca.controller.CompraController o-- com.biblioteca.biblioteca.service.ProveedorService : daoProveedor
+  com.biblioteca.biblioteca.controller.KardexController o-- com.biblioteca.biblioteca.service.KardexService : daoKardex
+  com.biblioteca.biblioteca.controller.LibroController o-- com.biblioteca.biblioteca.service.AutorService : daoAutor
+  com.biblioteca.biblioteca.controller.LibroController o-- com.biblioteca.biblioteca.service.CategoiaService : daoCategoria
+  com.biblioteca.biblioteca.controller.LibroController o-- com.biblioteca.biblioteca.service.LibroService : daoLibro
+  com.biblioteca.biblioteca.controller.LibroController o-- com.biblioteca.biblioteca.service.LibroAutorService : daoLibroAutor
+  com.biblioteca.biblioteca.controller.LibroController o-- com.biblioteca.biblioteca.service.LibroMateriaService : daoLibroMateria
+  com.biblioteca.biblioteca.controller.LibroController o-- com.biblioteca.biblioteca.service.MateriaService : daoMateria
+  com.biblioteca.biblioteca.controller.LoginController o-- com.biblioteca.biblioteca.service.UsuarioService : daoUsuario
+  com.biblioteca.biblioteca.controller.PrestamoController o-- com.biblioteca.biblioteca.service.KardexService : daoKardex
+  com.biblioteca.biblioteca.controller.PrestamoController o-- com.biblioteca.biblioteca.service.KardexDetalleService : daoKardexDetalle
+  com.biblioteca.biblioteca.controller.PrestamoController o-- com.biblioteca.biblioteca.service.PrestamoService : daoPrestamo
+  com.biblioteca.biblioteca.controller.ReporteController o-- com.biblioteca.biblioteca.service.LibroMasPrestadoPorBibliotecaService : daoLibroReporte
+  com.biblioteca.biblioteca.controller.ReporteController o-- com.biblioteca.biblioteca.service.EstadisticaMisActividadesService : daoMisActividades
+  com.biblioteca.biblioteca.controller.ReporteController o-- com.biblioteca.biblioteca.service.EstadisticaPrestamosPieChartService : daoPrestamoPieChart
+  com.biblioteca.biblioteca.controller.ReporteController o-- com.biblioteca.biblioteca.service.PrestamosPorMesService : daoPrestamoPorDia
+  com.biblioteca.biblioteca.model.Biblioteca o-- com.biblioteca.biblioteca.model.Facultad : facultad
+  com.biblioteca.biblioteca.model.Compra o-- com.biblioteca.biblioteca.model.Usuario : usuario
+  com.biblioteca.biblioteca.model.CompraDetalle o-- com.biblioteca.biblioteca.model.Libro : libro
+  com.biblioteca.biblioteca.model.EstadisticaLibroMasPrestaPorBiblioteca .up.|> java.io.Serializable
+  com.biblioteca.biblioteca.model.Kardex o-- com.biblioteca.biblioteca.model.Biblioteca : biblioteca
+  com.biblioteca.biblioteca.model.Kardex o-- com.biblioteca.biblioteca.model.Libro : libro
+  com.biblioteca.biblioteca.model.LibroAutor o-- com.biblioteca.biblioteca.model.Autor : autor
+  com.biblioteca.biblioteca.model.Prestamo o-- com.biblioteca.biblioteca.model.Libro : libro
+  com.biblioteca.biblioteca.model.Prestamo o-- com.biblioteca.biblioteca.model.Usuario : usuario
+  com.biblioteca.biblioteca.model.Usuario o-- com.biblioteca.biblioteca.model.Biblioteca : biblioteca
+  com.biblioteca.biblioteca.model.Usuario o-- com.biblioteca.biblioteca.model.Rol : rol
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml
